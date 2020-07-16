@@ -1,4 +1,5 @@
 module.exports = {
+  pathPrefix: '/polyglot-tools-docs',
   siteMetadata: {
     siteTitle: `polyglot-tools-docs`,
     defaultTitle: `polyglot-tools-docs`,
