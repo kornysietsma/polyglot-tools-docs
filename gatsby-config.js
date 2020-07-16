@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    siteTitle: `@rocketseat/gatsby-theme-docs`,
-    defaultTitle: `@rocketseat/gatsby-theme-docs`,
-    siteTitleShort: `gatsby-theme-docs`,
-    siteDescription: `Out of the box Gatsby Theme for creating documentation websites easily and quickly`,
-    siteUrl: `https://rocketdocs.netlify.com`,
-    siteAuthor: `@rocketseat`,
+    siteTitle: `polyglot-tools-docs`,
+    defaultTitle: `polyglot-tools-docs`,
+    siteTitleShort: `polyglot-tools-docs`,
+    siteDescription: `Korny's polyglot tool documentation site - WIP`,
+    siteUrl: `https://notyet`,
+    siteAuthor: `@kornys`,
     siteImage: `/banner.png`,
     siteLanguage: `en`,
     themeColor: `#7159c1`,
