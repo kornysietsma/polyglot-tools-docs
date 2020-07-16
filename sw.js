@@ -36,11 +36,11 @@ self.__precacheManifest = [
     "url": "f0e45107-ff2c7ac7fae000cceb4b.js"
   },
   {
-    "url": "app-f98f4fa76654181b7324.js"
+    "url": "app-ecce4b4480aa87c2dca4.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "dad75a0ff1ba0679ea20c6de1baf51bc"
+    "revision": "0091e1faee38779d9c8f7f5a33f745d7"
   },
   {
     "url": "component---cache-caches-gatsby-plugin-offline-app-shell-js-5a1ee105f05b3144b807.js"
@@ -51,7 +51,7 @@ self.__precacheManifest = [
   },
   {
     "url": "page-data/app-data.json",
-    "revision": "641a4b32f82bb4ff37d39fc3432b37df"
+    "revision": "9386e91c5841e5dd6d06652444dfeaac"
   },
   {
     "url": "polyfill-db2f4e55589df5b85311.js"
@@ -151,7 +151,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/polyglot-tools-docs/app-f98f4fa76654181b7324.js`))) {
+  if (!resources || !(await caches.match(`/polyglot-tools-docs/app-ecce4b4480aa87c2dca4.js`))) {
     return await fetch(event.request)
   }
 
