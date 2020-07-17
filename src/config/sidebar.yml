@@ -2,9 +2,13 @@
 
 - label: 'Introduction'
   link: '/'
-- label: 'Getting started'
-  link: '/getting-started'
+- label: 'Overview'
+  link: '/overview'
 - label: Tools
   items:
+    - label: 'Polyglot Code Scanner'
+      link: '/tools/scanner'
+    - label: 'Polyglot Code Offline Layout'
+      link: '/tools/offline-layout'
     - label: 'Polyglot Code Explorer'
-      link: '/explorer'
+      link: '/tools/explorer'

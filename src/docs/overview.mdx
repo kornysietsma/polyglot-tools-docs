@@ -1,0 +1,31 @@
+---
+title: 'Overview'
+---
+
+## What are the Polyglot Code Tools ?
+
+These are a bunch of tools I've been building in bits and pieces over the past few years, in an attempt to answer the question:
+
+> What can we understand about large codebases without needing complex language-specific parsers and logic?
+
+I've worked in many programming languages over the years, and many of them don't have good or easy code quality tools - either they are too new for a community to have built them, or they are from legacy projects where even if such tools exist, getting them up and running is a real hassle.
+
+Also I love interactive visualisation - it's far more useful for me to be able to explore a codebase visually, than to have a checklist of numeric scores.
+
+A lot of this comes from "Your Code as a Crime Scene" by Adam Tornhill, along with his other books, and a bunch of other research I discovered through his work.  TODO: add bibliography pages!
+
+There are two main groups of tools at the moment:
+
+## Polyglot Code Explorer
+
+This is really three tightly coupled tools:
+
+* [Polyglot Code Scanner](/tools/scanner) a rust application which scans directories of source code in many weird and wonderful ways, to produce a big data file for later viewing
+* [Polyglot Code Offline Layout](/tools/offline-layout) a node.js script which does the job of calculating a nice layout for the visualisation - this is too slow to run in a browser so runs standalone!
+* [Polyglot Code Explorer](/tools/explorer) the actual D3 visualisation tool
+
+## Git Logging Tools
+
+I actually realise I haven't pushed these to github yet! Which is good as I don't really need to document them :) Just suffice to say, I have some work in progress for trying to get yet another git log visualisation thingy working.  One day.
+
+
