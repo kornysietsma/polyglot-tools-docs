@@ -6,13 +6,25 @@ title: 'Overview'
 
 These are a bunch of tools I've been building in bits and pieces over the past few years, in an attempt to answer the question:
 
-> What can we understand about large codebases without needing complex language-specific parsers and logic?
+> How can we visualise large codebases without needing complex language-specific parsers and logic?
+
+### Why visualisation?
+
+I'm a visual thinker, so my main focus is on visualisation - especially when trying to spot patterns in millions of lines of code.
+
+It is far quicker for me tto look at a diagram and see some unusual colouring in one area, than to see the same information in a table of numbers.
+
+### Why polyglot?
 
 I've worked in many programming languages over the years, and many of them don't have good or easy code quality tools - either they are too new for a community to have built them, or they are from legacy projects where even if such tools exist, getting them up and running is a real hassle.
 
-Also I love interactive visualisation - it's far more useful for me to be able to explore a codebase visually, than to have a checklist of numeric scores.
+Also many programs don't use a single language - we have a number of great programming languages with special "sweet spots" and it's quite common to have UIs built in a quite different language to services or systems tools.  But comparing them with language-specific tools is almost impossible - and there's a big risk of comparing Apples with Oranges and getting a not very useful view.
 
-A lot of this comes from "Your Code as a Crime Scene" by Adam Tornhill, along with his other books, and a bunch of other research I discovered through his work.  TODO: add bibliography pages!
+### Where did this come from?
+
+The basic ideas came from [Erik Dörnenberg's articles on Toxic code visualisation](https://erik.doernenburg.com/2013/06/toxicity-reloaded/) plus Adam Tornhill's book [Your code as a crime scene](https://pragprog.com/book/atcrime/your-code-as-a-crime-scene) - plus a lot of [research](/research) that Adam's book lead me to.
+
+See also [History](/history) for more about how this all started.
 
 There are two main groups of tools at the moment:
 
@@ -20,12 +32,16 @@ There are two main groups of tools at the moment:
 
 This is really three tightly coupled tools:
 
-* [Polyglot Code Scanner](/tools/scanner) a rust application which scans directories of source code in many weird and wonderful ways, to produce a big data file for later viewing
-* [Polyglot Code Offline Layout](/tools/offline-layout) a node.js script which does the job of calculating a nice layout for the visualisation - this is too slow to run in a browser so runs standalone!
-* [Polyglot Code Explorer](/tools/explorer) the actual D3 visualisation tool
+* [Polyglot Code Scanner](/tools/scanner/description) a rust application which scans directories of source code in many weird and wonderful ways, to produce a big data file for later viewing
+* [Polyglot Code Offline Layout](/tools/layout/description) a node.js script which does the job of calculating a nice layout for the visualisation - this is too slow to run in a browser so runs standalone!
+* [Polyglot Code Explorer](/tools/explorer/description) the actual D3 visualisation tool, built using React and D3 - see [my blog post](https://blog.korny.info/2020/07/19/better-d3-with-react.html) and [demo code](https://github.com/kornysietsma/d3-react-demo) for how I like to get React and D3 to play nicely.
+
+For an overview of how to actually use these tools, look at the [How To](/tools/explorer/howto) page.
 
 ## Git Logging Tools
 
 I actually realise I haven't pushed these to github yet! Which is good as I don't really need to document them :) Just suffice to say, I have some work in progress for trying to get yet another git log visualisation thingy working.  One day.
+
+There's an older example of this at <https://github.com/kornysietsma/git-cd-chart-twuk2018>
 
 

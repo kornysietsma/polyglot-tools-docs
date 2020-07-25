@@ -1,0 +1,15 @@
+---
+title: 'History'
+---
+
+In 2016 I was asked to help evaluate a large and ugly codebase for a client, working closely with my colleague at the time [Ra-el Peters](https://www.linkedin.com/in/ra-el-peters-697ba325/).  The client had started a big-bang re-write of their legacy code, but that endeavour seemed to be stalling.  We needed to quickly review both codebases and answer their key question:
+
+> Should they continue with the re-write, or revert to the legacy code and try a different approach?
+
+I was familiar with [Erik Dörnenberg's articles on Toxic code visualisation](https://erik.doernenburg.com/2013/06/toxicity-reloaded/) but sadly most of the tools he referenced seemed to be abandoned, and other tools we knew of were quite focused on particular languages - this codebase was a mix of old versions of C#, SQL stored procedures, hand-rolled JQuery+JavaScript, AngularJS, newer versions of C#, and probably others we weren't aware of.  We didn't want to try to get SonarQube or similar installed and running in-depth metrics on this code - we wanted a quick way to get an overview, and drill down on the toxic parts.
+
+I'd also read Adam Tornhill's "Your code as a crime scene" and was quite keen to use his [code-maat](https://github.com/adamtornhill/code-maat) tools - which had the huge advantage of not really needing language parsers to work.  Adam pointed out that purely looking at lines-of-code might be enough - large files are correlated to complexity in many cases.
+
+So Ra-el and I threw together some code, using [cloc](https://github.com/AlDanial/cloc) to count lines of code, [code-maat](https://github.com/adamtornhill/code-maat) to collect other metrics from source-control such as rate of change and number of authors, and [D3 Treemaps](https://observablehq.com/@d3/treemap) to show file sizes.
+
+TODO: add what changed in 2018 and onwards

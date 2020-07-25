@@ -6,9 +6,13 @@
   link: '/overview'
 - label: Tools
   items:
+    - label: 'Polyglot Code Explorer'
+      items:
+        - label: 'Description'
+          link: /tools/explorer/description
+        - label: 'How to run'
+          link: /tools/explorer/howto
     - label: 'Polyglot Code Scanner'
       link: '/tools/scanner'
     - label: 'Polyglot Code Offline Layout'
       link: '/tools/offline-layout'
-    - label: 'Polyglot Code Explorer'
-      link: '/tools/explorer'

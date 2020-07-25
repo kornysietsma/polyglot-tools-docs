@@ -1,0 +1,41 @@
+---
+title: 'How to run the Polyglot Code Explorer'
+---
+
+The [explorer](/tools/explorer/description) requires a data file to run - there is a sample one checked into the codebase, but in order to do anything useful you'll want to build your own.
+
+This is currently a two stage process:
+
+- Run the [polyglot-code-scanner](/tools/scanner/howto) with one or more git repositories - this will produce a quite large JSON file containing the code metrics
+- Run the [polyglot-code-offline-layout](/tools/layout/howto) with the output of the scanner - this will add layout information to the JSON file
+
+Then you can run the explorer.
+
+*Note* that right now, you have to clone the code and have a recent version of Node.js to fetch dependencies and run everything.   I might set up a Docker container in future to make this easier, but at the moment this is largely aimed at developers so I haven't spent a lot of time making it slick.
+
+## To run the explorer with a new data file
+
+- Clone the repository at https://github.com/kornysietsma/polyglot-code-explorer
+- Install yarn (or you can use npm, but this is set up using yarn as that's what the react starter uses)
+- Install yarn dependencies `yarn install`
+- copy your JSON data file into the `public/data` directory in the checked out code
+- set the environment variable `REACT_APP_EXPLORER_DATA` to the name of your JSON file (excluding the extension).  (react requires variables to start with REACT_APP for your app to see them!)
+- run `yarn start` and it will run the explorer in a new browser window.
+- you can set `BROWER=none` to stop it opening a new window every time.
+
+For a full example, these are the commands I run typically to process and view the QGIS codebase:
+
+```shell
+# in scanner directory
+polyglot_code_scanner -c ~/samples/QGIS > ~/data/qgis.json
+# in layout directory
+node layout.js -i ~/data/qgis.json -o ~/data/qgis-voronoi.json
+# in explorer directory
+cp ~/data/qgis-voronoi.json ./public/data/qgis.json
+
+REACT_APP_EXPLORER_DATA=qgis BROWSER=none yarn start
+```
+
+See the [polyglot-code-scanner](/tools/scanner/howto) and [polyglot-code-offline-layout](/tools/layout/howto) howto guides for more on the parameters these apps take.
+
+See the [Explorer user interface](/tools/explorer/ui) page for more on how to use the explorer once it is running.
