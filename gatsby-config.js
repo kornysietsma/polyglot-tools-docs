@@ -1,11 +1,11 @@
 module.exports = {
-  pathPrefix: '/polyglot-tools-docs',
+  pathPrefix: '/',
   siteMetadata: {
     siteTitle: `polyglot-tools-docs`,
     defaultTitle: `polyglot-tools-docs`,
     siteTitleShort: `polyglot-tools-docs`,
     siteDescription: `Korny's polyglot tool documentation site - WIP`,
-    siteUrl: `https://notyet`,
+    siteUrl: `https://polyglot.korny.info`,
     siteAuthor: `@kornys`,
     siteImage: `/banner.png`,
     siteLanguage: `en`,
@@ -43,7 +43,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
-        siteUrl: `https://rocketdocs.netlify.com`,
+        siteUrl: `https://polyglot.korny.info`,
       },
     },
     `gatsby-plugin-offline`,
