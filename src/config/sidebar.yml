@@ -7,12 +7,16 @@
 - label: Tools
   items:
     - label: 'Polyglot Code Explorer'
-      items:
-        - label: 'Description'
-          link: /tools/explorer/description
-        - label: 'How to run'
-          link: /tools/explorer/howto
+      link: /tools/explorer/description
     - label: 'Polyglot Code Scanner'
-      link: '/tools/scanner'
+      link: '/tools/scanner/description'
     - label: 'Polyglot Code Offline Layout'
-      link: '/tools/offline-layout'
+      link: '/tools/layout/description'
+- label: 'How To guides'
+  items:
+    - label: 'How to run the Explorer'
+      link: /tools/explorer/howto
+    - label: 'How to run the Scanner'
+      link: /tools/scanner/howto
+    - label: 'How to run the Layout'
+      link: /tools/layout/howto
