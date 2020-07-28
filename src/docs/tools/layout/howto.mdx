@@ -2,7 +2,34 @@
 title: 'How to run the Polyglot Code Offline Layout script'
 ---
 
-TODO
+The offline layout script - it's too generous to call it an application! - is run as a node.js script; you'll need to install node.js to run it.
 
-`node layout.js -i ~/data/qgis.json -o ~/data/qgis-voronoi.json`
+Apologies that this is fairly clunky at the moment - this script largely exists because the voronoi layout I wanted to use was far too slow to run in a browser, especially as it fails pretty often (see [the docs](/tools/layout/description) for more).
+
+So to run it:
+
+1. Install node.js - see https://nodejs.org/en/download/package-manager/
+2. clone the code from https://github.com/kornysietsma/polyglot-code-offline-layout
+3. In the checked out repository, run `npm install` to fetch all the dependencies
+
+Then you can run it with
+
+```sh
+$ node layout.js -i input.json -o output.json
+```
+
+If you have multiple repositories in your source json, e.g. for a group of projects or microservices, you can ask for a pretty circle-packed algorithm for the main diagram with `-c`:
+
+```sh
+$ node layout.js -c -i input.json -o output.json
+```
+
+
+There are some optional parameters:
+
+- -h for help
+- -c to use circle packing for the top level shaping, voronoi for the rest
+- -g (the default) to accept an imperfect voronoi map - if you turn this off, the script will fail if it can't find a precise layout
+- -p NNN - specify how many points to use to draw the main circles around voronoi treemaps.  The default is 128, which is a pretty smooth circle.  You could specify `-p 6` and it will use hexagons!
+
 
