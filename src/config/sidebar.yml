@@ -20,3 +20,7 @@
       link: /tools/scanner/howto
     - label: 'How to run the Layout'
       link: /tools/layout/howto
+- label: 'Other Information'
+  items:
+    - label: 'Data Format'
+      link: /tools/explorer/data-format

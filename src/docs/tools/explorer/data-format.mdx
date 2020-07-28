@@ -6,23 +6,25 @@ The Polyglot Code Explorer relies on a JSON file format, which is fairly loose a
 
 The format is based on files used in d3 demonstrations, usually called "flare" - though I'm not sure where the name came from.
 
-It's a very basic tree structure:
+## Basic structure
+
+The main structure is a tree of nodes and children
 
 ```json
 {
   "name": "<root>",
-  "data": { ... root data ... },
+  "data": { "root": "stuff" },
   "children": [
       {
         "name": "foo",
-        "data:" { ... foo data ... },
+        "data:" { "foo": "stuff" },
         "children": [
-            ... and so on ...
+            { "e.g.": "files or directories" }
         ]
       },
       {
           "name": "bar.txt",
-          "data": { ... bar.txt data ... }
+          "data": { "bar": "stuff" }
       }
   ],
 }
@@ -30,4 +32,199 @@ It's a very basic tree structure:
 
 Every node is a directory or file.  You can distinguish them only by the fact that files have no `children` entry - an empty directory will have an empty `children` entry.
 
-The `data` is where all other data lives - TODO more docs!
+The `data` is where almost all other data lives - it's content depends a bit on what kind of tree node you are looking at.
+
+## Root node data
+
+The root node has data that is relevant for the whole project:
+
+```json
+"data": {
+    "coupling_meta": {
+      "bucket_count": 40,
+      "bucket_size": 7862400,
+      "first_bucket_start": 1278288001
+    },
+    "git_meta": {
+      "users": [
+        {
+          "id": 0,
+          "user": {
+            "email": "korny@sietsma.com",
+            "name": "Kornelis Sietsma"
+          }
+        }
+      ]
+    }
+```
+
+`coupling_meta` is metadata about coupling - TODO: link to docs on coupling.  Basically coupling is calculated for buckets of time - this tells you how big the buckets are (in seconds) when the first one starts (in seconds from the epoch), and how many buckets exist.
+
+`git_meta/users` is a mapping of user identity to unique sequential IDs.  This is mostly to save space!  The git data repeats the same users over and over - files would be much larger, and much slower to process, if the user names and emails were denormalised across the whole file.
+
+In future there may also be the ability here to flag users as aliases of each other (often one person has more than one git identity).
+
+## Directory nodes
+
+At the moment directories don't have a `data` component unless they are also the root of a git repository, in which case they have a very simple data object:
+
+```json
+"data": {
+  "git": {
+    "head": "2d0c4b4564e20840a1649dd4f43a4f068749836a",
+    "remote_url": "git@github.com:reponame/projectname.git"
+  }
+}
+```
+
+The scanner can scan multiple git repositories - the root of each repository stores the current `head` and the remote URL, this allows the UI to link to the appropriate website.
+
+This may not work with non-github urls!
+
+Also this information should be optional - code can be scanned without a remote git repository (I think).
+
+## File nodes
+
+Files have a lot more information:
+
+```json
+"data": {
+  "indentation": {
+    "lines": 74,
+    "maximum": 2,
+    "median": 0,
+    "minimum": 1,
+    "p75": 0,
+    "p90": 0,
+    "p99": 0,
+    "stddev": 0,
+    "sum": 0
+  },
+  "loc": {
+    "binary": false,
+    "blanks": 0,
+    "bytes": 4011,
+    "code": 102,
+    "comments": 0,
+    "language": "Markdown",
+    "lines": 102
+  },
+  "git": {
+    "age_in_days": 58,
+    "creation_date": 1531407597,
+    "details": [
+      {
+        "commit_day": 1531353600,
+        "commits": 1,
+        "lines_added": 2,
+        "lines_deleted": 0,
+        "users": [
+          2,
+          4
+        ]
+      },
+      {
+        "commit_day": 1534636800,
+        "commits": 1,
+        "lines_added": 6,
+        "lines_deleted": 1,
+        "users": [
+          0
+        ]
+      }
+    ],
+    "last_update": 1534721714,
+    "user_count": 5,
+    "users": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ]
+  },
+  "coupling": {
+    "buckets": [
+      {
+        "bucket_end": 1537747200,
+        "bucket_start": 1529884801,
+        "commit_days": 11,
+        "coupled_files": [
+          [
+            "foo/bar/baz.java",
+            3
+          ],
+          [
+            "bar/bat/jazz.js",
+            11
+          ],
+        ]
+      }
+    ]
+  }
+}
+```
+
+Some of this is hopefully somewhat obvious:
+
+- Indentation - data about line indentation; number of lines, indentation stats (in spaces, tabs are counted as 4 spaces).
+- Loc - lines of code info:
+  - binary - flag if it's a binary file (which has no lines, so won't be visible in the current layout)
+  - blanks - number of blank lines
+  - bytes - file size in bytes
+  - code - number of lines of code
+  - comments - number of lines of comments
+  - language - what we think the language is. If the type is unknown, this is the file extension, or "no_extension" if it has none.
+  - lines - total lines
+- git
+  - age_in_days - the days since last commit (this is redundant and may be removed in future)
+  - creation_date - the _first_ "Add" found in the scanned git history.  Note that a file can be added on multiple branches and merged, so if there are two "Adds" it takes the earlier one.  And if there are commits _before_ the first add, this is left unset (as the real add could be outside the scanned date range)
+  - details - this is a breakdown of all git adds/deletes/changes, by day.  The scanner groups information by day, as storing every commit would make files even larger, and generally a single day is enough granularity for what we need.
+    - commit_day - the start of the day (in seconds since the epoch) - **NOTE** this is really the _author date_! Behind the scenes Git stores two people and two timestamps for everything - the author, who is the person who originally wrote the change, and the committer, which is the person who last applied the work.  This is very confusing, especially as git logs show different dates in different scenarios.  See [this blog post](https://alexpeattie.com/blog/working-with-dates-in-git/) for more.  The scanner stores information at the author date.  TODO: break this out into a side discussion.
+    - commits - count of commits on this day.  (In future I'd like to distinguish between "commits that changed any lines" and "commits that were just a rename/move/something")
+    - lines_added - total of lines added
+    - lines_deleted - total of lines lines_deleted
+    - users - this is a list of all user IDs who were involved.  This includes authors, committers, and anyone tagged with `Co-authored-by` comments - see [the github post about this](https://github.blog/2018-01-29-commit-together-with-co-authors/) though it now works with several other git providers.
+  - last_update - timestamp of the latest commit (this is redundant and may be removed in the future)
+  - user_count - count of unique users who made changes (this is redundant and may be removed in the future)
+  - users - a list of all users who modified this file (this is redundant and may be removed in the future)
+- coupling - this is optional, and only included if you specified `--coupling` when you ran the scanner. Also if a file has no coupling found, there will be no coupling section!
+  - buckets - coupling is calculated for a number of buckets - by default they are 91 days so about 3 months - this allows the UI to show coupling data over a selected date range. TODO: document this elsewhere, with diagrams!
+    - bucket_start and bucket_end - the range of the bucket (in seconds since the epoch)
+    - commit_days - how many days _this_ file was committed in this bucket
+    - coupled_files - a list of all files which also changed on the same days. So in the example above, the current file changed on 11 days, and on 3 of those days, `baz.java` changed; on 11 days (i.e. every day) `jazz.js` changed.  (the files may have also changed on other days - the coupling relationship is directional - changes to this file might always trigger a change to `jazz.js` but not vice versa)
+
+Note that we store a lot of excess coupling information (depending on thresholds you picked when you ran the scanner) - by default the `baz.java` relationship above won't be shown as it's not very strongly coupled.
+
+## Layout data
+The [layout](/tools/layout/description) tool adds some extra information to every node, including the root:
+
+```json
+  "layout": {
+    "polygon": [
+      [
+        511.38327357704793,
+        -25.122649255644422
+      ],
+      [
+        509.5345800561642,
+        -50.18477584874132
+      ],
+    ]
+    "center": [
+      0,
+      0
+    ],
+    "algorithm": "voronoi",
+    "width": 1024,
+    "height": 1024
+  },
+  "value": 135940,
+```
+
+The layout includes a center point for each node, a maximum width and height, and a polygon defined as a list of vertices.
+
+Algorithm can be `voronoi` or `circlePack` at the moment - this is only really used by the UI to tell how to draw the background.
+
+There is also a "value" which is the sum of lines of code of all contained files. (D3 could calculate this for us - it's here just to save processing in the UI)
+
