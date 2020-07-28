@@ -1,0 +1,33 @@
+---
+title: 'Data format'
+---
+
+The Polyglot Code Explorer relies on a JSON file format, which is fairly loose and not really documented ... until now!
+
+The format is based on files used in d3 demonstrations, usually called "flare" - though I'm not sure where the name came from.
+
+It's a very basic tree structure:
+
+```json
+{
+  "name": "<root>",
+  "data": { ... root data ... },
+  "children": [
+      {
+        "name": "foo",
+        "data:" { ... foo data ... },
+        "children": [
+            ... and so on ...
+        ]
+      },
+      {
+          "name": "bar.txt",
+          "data": { ... bar.txt data ... }
+      }
+  ],
+}
+```
+
+Every node is a directory or file.  You can distinguish them only by the fact that files have no `children` entry - an empty directory will have an empty `children` entry.
+
+The `data` is where all other data lives - TODO more docs!

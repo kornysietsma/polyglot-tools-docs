@@ -2,6 +2,62 @@
 title: 'How to run the Polyglot Code Scanner'
 ---
 
-TODO
+The code scanner is a rust program - this means I should be able to build and publish binary executables so you don't need to know anything about rust.
 
-`polyglot_code_scanner -c ~/samples/QGIS > ~/data/qgis.json`
+But I haven't done that yet - sorry!
+
+So you'll need to compile a binary yourself.
+
+## Fetching code and compiling a binary
+
+1. Get rust - instructions are at <https://www.rust-lang.org/tools/install>
+2. Clone or fork the project from https://github.com/kornysietsma/polyglot-code-scanner
+3. test and build with `cargo` the rust packaging tool:
+
+```sh
+$ cargo test
+# ... lots of warnings but hopefully no failures
+$ cargo build --release
+# ... lots of messages and noise - compiling can be slow
+$ ls -l target/release
+total 14368
+drwxr-xr-x  125 korny  staff     4000 28 Jul 15:09 build
+drwxr-xr-x  891 korny  staff    28512 28 Jul 15:11 deps
+drwxr-xr-x    2 korny  staff       64 20 Jun 15:20 examples
+drwxr-xr-x    2 korny  staff       64 20 Jun 15:20 incremental
+-rw-r--r--    1 korny  staff     1003 29 Jun 14:45 libpolyglot_code_scanner.d
+-rw-r--r--    2 korny  staff  3062736 28 Jul 15:11 libpolyglot_code_scanner.rlib
+-rwxr-xr-x    2 korny  staff  4280600 28 Jul 15:11 polyglot_code_scanner
+-rw-r--r--    1 korny  staff     1063 29 Jun 14:45 polyglot_code_scanner.d
+
+$ target/release/polyglot_code_scanner -V
+polyglot_code_scanner 0.0.2
+```
+
+All you need to care about is the binary `polyglot_code_scanner` - that's what you need to run.  You can run it from the target directory or copy it somewhere useful.
+
+(You can also run the project with `cargo run` but that's slower as it runs with debugging and without a lot of optimisation)
+
+## Running it
+
+You can run `polyglot_code_scanner -h` for command-line help.
+
+Usually you will just run:
+
+`polyglot_code_scanner --coupling -o json_file_name.json <source directory>`
+
+### Important options
+
+"--years <git_years>" - scan through this much history.  Git scanning can be slow, and often you only care about the last few years.
+
+"--coupling" - enables temporal coupling.  This can be very very slow to calculate - if you don't want it, don't specify this option!  TODO: link to temporal coupling explanation
+
+## Output file
+
+See [Data Format](/tools/explorer/data-format) for a description of the output JSON file format.
+
+It's not pretty printed to save space - if you want it pretty, the easiest thing is to install [jq](https://stedolan.github.io/jq/download/) and run:
+
+```sh
+jq < file.json | less
+```
