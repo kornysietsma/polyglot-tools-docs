@@ -24,3 +24,5 @@
   items:
     - label: 'Data Format'
       link: /tools/explorer/data-format
+    - label: 'Bibliography'
+      link: /bibliography
