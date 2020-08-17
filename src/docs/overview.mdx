@@ -3,6 +3,10 @@ title: 'Overview'
 ---
 import Citation from '../components/Citation.js'
 
+![explorer sample](/images/qgis_circle.png)
+
+*TL;DR:* If you don't want to read all this, jump in and have a play with [the Polyglot Code Explorer](http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/) or [another sample with multiple codebases](http://polyglot-code-explorer-openmrs.s3-website.eu-west-2.amazonaws.com/)
+
 ## What are the Polyglot Code Tools ?
 
 These are a bunch of tools I've been building in bits and pieces over the past few years, in an attempt to answer the question:
@@ -13,7 +17,7 @@ These are a bunch of tools I've been building in bits and pieces over the past f
 
 I'm a visual thinker, so my main focus is on visualisation - especially when trying to spot patterns in millions of lines of code.
 
-It is far quicker for me tto look at a diagram and see some unusual colouring in one area, than to see the same information in a table of numbers.
+It is far quicker for me to look at a diagram and see some unusual colouring in one area, than to see the same information in a table of numbers.
 
 ### Why polyglot?
 
@@ -33,9 +37,9 @@ There are two main groups of tools at the moment:
 
 This is really three tightly coupled tools:
 
-* [Polyglot Code Scanner](/tools/scanner/description) a rust application which scans directories of source code in many weird and wonderful ways, to produce a big data file for later viewing
-* [Polyglot Code Offline Layout](/tools/layout/description) a node.js script which does the job of calculating a nice layout for the visualisation - this is too slow to run in a browser so runs standalone!
-* [Polyglot Code Explorer](/tools/explorer/description) the actual D3 visualisation tool, built using React and D3 - see [my blog post](https://blog.korny.info/2020/07/19/better-d3-with-react.html) and [demo code](https://github.com/kornysietsma/d3-react-demo) for how I like to get React and D3 to play nicely.
+* [Polyglot Code Explorer](/tools/explorer/description) - this is the front-end visualisation tool
+* [Polyglot Code Scanner](/tools/scanner/description) - this is a back-end tool, which scans directories of source code in many weird and wonderful ways, to produce a big data file for the explorer
+* [Polyglot Code Offline Layout](/tools/layout/description) - this is a second stage processing script which calculates the layout information needed by the explorer - this is too slow to run in a browser so runs standalone!
 
 For an overview of how to actually use these tools, look at the [How To](/tools/explorer/howto) page.
 
