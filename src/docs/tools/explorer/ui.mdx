@@ -2,4 +2,60 @@
 title: 'The Polyglot code explorer User Interface'
 ---
 
-TODO - this needs doing!
+## Main interface
+
+A typical front end of the Explorer looks like this:
+
+![Explorer user interface](../../images/ui_guide/Main_UI.png)
+
+Some repositories will have a single circular display, but if you [configure the layout tool correctly](tools/layout/howto) you can use circle packing for the highest level display, useful for multi-source projects.
+
+Note the user interface is a bit responsive, but it's really designed for large displays - if you see the control panels and the center diagram stacked vertically, I suggest zooming your browser out until the display looks like the one above.  Also the date selector might not be visible at normal screen resolutions!
+
+The center is the main display - each coloured area represents a file, if you hover over a file you'll see it's name shown.  You can zoom and pan the display with a mouse - similar to Google maps, mouse-wheel in/out to zoom, click and drag to pan.
+
+## Inspecting files
+
+If you click on a file, you'll see the file and it's parents highlighted in yellow, and details will show up on the inspection panel on the right:
+
+![Explorer user interface - selection](../../images/ui_guide/Selection.png)
+
+There is a lot of data in the inspection panel!  Often too much, so you can close down areas you don't want to see with the show/hide buttons.
+
+You can also click on a directory in the top part of the display - currently there is no summary of metrics for a directory, though, so this display isn't very useful.
+
+## Date selection
+
+Most data is relative to the date selection in the bottom of the display - you can drag the date selector arond with a mouse, or drag the left or right ends of the selection widget to change the size of the selection window.
+
+_This only applies to data derived from git history_ - other metrics like indentation and lines of code are based on the most recent file data, and won't change as you change date ranges.
+
+Also the scanner has no knowledge of files that have been deleted.  If you change the date selection to 2001, you will not see files that existed in 2001 and have since been deleted!
+
+Files that were _created_ before 2001 won't be shown.  However as the layout is not changeable at runtime, this means areas of the display showing nonexistent files will be black, but will still take up space.
+
+## Coupling
+
+Note that coupling is still under development - the first iteration works, but I think it needs a lot of refinement to be useful.
+
+If you show the coupling controls and then show coupling, you'll see a display like this:
+
+![Explorer user interface - coupling](../../images/ui_guide/Coupling.png)
+
+The curved lines show which files seem to be temporally coupled to which other files.
+
+Note each line is unidirectional - file A may be coupled to file B, but file B may not be coupled to file A.
+
+For example, in the screenshot above, the file `testprocessinggui.cpp` had commits on 22 days in the date range selected.
+
+The file `qgisapp.cpp` was also changed on 20 of the same days.
+
+According to the current coupling algorithm, this means it has a ratio of 0.909 - 90% of commits to `testprocessinggui.cpp` seem to have also implied commits to `qgisapp.cpp`.
+
+The converse might not be true -  `qgisapp.cpp` might have changed on another 20 unrelated days, so it might not have a coupling connection back to `testprocessinggui.cpp`.
+
+Obviously this logic can produce a lot of false positives, if files change a lot coincidentally.
+
+I think this needs redesign. I could limit coupling to changes that actually occurred in a single commit, but that wouldn't work for multi-repository projects, or to see changes where a change to file A broke a test build and forced a following change to file B.
+
+At minimum, I might try narrowing the time window for coupling from a day, to maybe an hour, and see what happens.  (This may however make file sizes a lot bigger!)  Time permitting, of course.

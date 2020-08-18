@@ -8,6 +8,8 @@
   items:
     - label: 'Polyglot Code Explorer'
       link: /tools/explorer/description
+    - label: 'Explorer UI in detail'
+      link: /tools/explorer/ui
     - label: 'Polyglot Code Scanner'
       link: '/tools/scanner/description'
     - label: 'Polyglot Code Offline Layout'
