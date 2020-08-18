@@ -1,0 +1,131 @@
+---
+title: 'Research Notes'
+---
+import Citation from '../components/Citation.js'
+
+**This page is a work in progress**
+
+
+> Looking for bugs in all the right places. <Citation>(Bell, Ostrand, and Weyuker 2006)</Citation>
+
+Notes that most of their metrics are not much better than just looking at lines of code.
+
+> Using developer information as a factor for fault prediction. <Citation>(Weyuker, Ostrand, and Bell 2007)</Citation>
+
+This one adds developer info such as number of devs in recent release, number of new devs, cumulative devs during all prior releases
+
+> Do too many cooks spoil the broth? Using the number of developers to enhance defect prediction models <Citation>(Weyuker, Ostrand, and Bell 2008)</Citation>
+
+Adding developer counts to their analysis. Useful but see notes above.
+
+> Comparing the effectiveness of several modeling methods for fault prediction. <Citation>(Weyuker, Ostrand, and Bell 2010)</Citation>
+
+mostly this is about different statistical modeling approaches.
+
+> Does measuring code change improve fault prediction? <Citation>(Bell, Ostrand, and Weyuker 2011)</Citation>
+
+looking at including code change info to their modeling
+
+> Don't touch my code! Examining the effects of ownership on software quality. <Citation>(Bird et al. 2011)</Citation>
+
+Microsoft research, largely on Windows Vista and Windows 7 code
+
+Seems a bit mixed between "code ownership" and "allowing 'low expertise' developers to make unsupervised changes" - maybe it's just my biases, but the conclusion seems to be that it's good to have single points of failure owning critical codebases, rather than working out the cultural / communication problems...
+
+> A metric for software readability <Citation>(Buse and Weimer 2008)</Citation>
+
+An attempt to build up metrics around "readability" - whatever that means.
+Has a broad range of sources used
+
+> Code Smells Quantification: A Case Study On Large Open Source Research Codebase. <Citation>(Chauhan 2019)</Citation>
+
+Interesting as it has a comparison of the state of an academic codebase <Citation>(QGis)</Citation> vs a commercial open-source codebase <Citation>(tensor-flow)</Citation> and discusses at least two styles of coding.
+
+> Fractal figures: Visualizing development effort for cvs entities <Citation>(D’Ambros, Lanza, and Gall 2005)</Citation>
+
+This looks at ways to visualise, and categorise, developer effort - identifying code that is clustered around a few key owners, vs spread out across many
+Not just visualisation, it gives an algorithm for producing a metric
+TODO - it'd be interesting to add this to the Polyglot Code Explorer.
+
+> On the relationship between change coupling and software defects <Citation>(D’Ambros, Lanza, and Robbes 2009)</Citation>
+
+Quite detailed calculations showing correlation between tightly coupled code and defect levels
+
+This is mostly around monolithic applications so uses specific commits not time windows - I probably need to track per-commit coupling as well, my coupling code is still under active development!
+
+> Does code decay? assessing the evidence from change management data. <Citation>(Eick et al. 2001)</Citation>
+
+Quite old - the paper is from 2001, the code is older - fascinating for how giant long-lived projects operated in the 90s, and looking at ways to identify code decay. Even hints that "refactoring" might be of some value.
+
+> Predicting fault incidence using software change history. <Citation>(Graves et al. 2000)</Citation>
+
+Quite old - 2000, code from 1997
+
+Concludes that older modules with large recent changes make for most faults.
+
+> Predicting faults using the complexity of code changes <Citation>(Hassan 2009)</Citation>
+
+Looks very interesting, needs a more detailed read
+
+TODO: read this!
+
+> Reading beside the lines: Indentation as a proxy for complexity metric. <Citation>(Hindle, Godfrey, and Holt 2008)</Citation>
+
+
+This is the main reference for the indentation-as-complexity visualisation.
+Interesting that they indicate standard deviation is a good way to look at indentation
+
+> An empirical study on the impact of duplicate code <Citation>(Hotta et al. 2012)</Citation>
+
+What it says on the tin - trying to identify whether duplicate code is as bad as everyone assumes
+
+> Non-essential changes in version histories <Citation>(Kawrykow and Robillard 2011)</Citation>
+
+Improving change metrics by eliminating changes which are just trivial like indentation or variable renaming.
+
+Sadly this is completely dependent on language-specific parsing to identify type signatures, so not much use for me.
+
+
+> Attitudes, beliefs and development data concerning agile software development practices <Citation>(Matthies et al. 2019)</Citation>
+
+Includes interesting stuff on detection of agile practices via code artifacts!
+
+> Use of relative code churn measures to predict system defect density <Citation>(Nagappan and Ball 2005)</Citation>
+
+Instead of absolute churn, looks at churn relative to <Citation>(say)</Citation> lines of code, different relative time scales
+
+Windows Server 2003 codebase
+
+> The influence of organizational structure on software quality <Citation>(Nagappan, Murphy, and Basili 2008)</Citation>
+
+Using metrics like employee churn, position of developers on org chart - very cool stuff
+They conclude it is more effective to use organisational metrics than code quality metrics!
+Contains a useful summary of prior research too
+
+TODO: read further
+
+> Source code properties of defective infrastructure as code scripts. <Citation>(Rahman and Williams 2019)</Citation>
+
+Interesting to look at Infrastructure as Code - a different kind of code.  Includes correlations with number of static strings in codebases!
+
+> Evaluating complexity, code churn, and developer activity metrics as indicators of software vulnerabilities. <Citation>(Shin et al. 2011)</Citation>
+
+Analysis of Firefox and the Linux kernel
+
+TODO: this needs a more detailed read
+
+> Cross-project defect prediction: a large scale experiment on data vs. domain vs. process. <Citation>(Zimmermann et al. 2009)</Citation>
+
+Microsoft research, but not on just their code but others
+
+lots of cool metrics and whether they actually work across projects and orgs. For example IE vs Firefox.
+
+TODO: needs more detailed reading
+
+> Still to find and read
+
+"Code smells for multi-language systems" paper from europlop 19
+
+"visual detection of design anomalies" - refers to <Citation to='LSP05'></Citation>
+
+

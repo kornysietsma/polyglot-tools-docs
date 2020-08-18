@@ -4,195 +4,141 @@ title: 'Bibliography'
 import CitationAnchor from '../components/CitationAnchor.js'
 import Citation from '../components/Citation.js'
 
-**This page is a work in progress**
+This is the books and research I've looked at - it needs a bit of cleaning, not all the papers here are actually useful!
 
-This is both research I've looked at, and a handful of my notes - it's not really a formal bibliography, but I'm trying to roughly follow standard references for clarity.
+I have notes that used to be here - I'm trying to clean them up, they'll reappear on another page soon.  (Inline notes didn't play nicely with Zotero which I'm using to manage the research)
 
 ## A note on research limitations
 
 It's fascinating reading a lot of this research.  An awful lot of it draws conclusions, or _implies_ conclusions, based on one particular kind of codebase or kind of organisation; the trouble is, software development is extremely diverse, in kinds of organisation, software architectures, and software development practices.  And it seems a lot of academic research is done without much effort to think about these differences - partly because it's actually quite hard to get your hands on a diverse range of commercial software sources!  And quite a bit of research is 20+ years old, from giant organisations, so it's unlikely to talk about microservices or TDD all that much.
 
-I'll try to insert brief notes in this bibliography to clarify the kinds of code and organisation they looked at.  All the data is useful - but the context is important.
-
 ## Books
 
-### Your Code as a Crime Scene <CitationAnchor>Tor15</CitationAnchor>
+### Your Code as a Crime Scene <CitationAnchor>(Tornhill 2015)</CitationAnchor>
 
-Adam Tornhill. Your Code as a Crime Scene. The Pragmatic Bookshelf, Raleigh, NC, 2015. [GoodReads](https://www.goodreads.com/book/show/23627482-your-code-as-a-crime-scene)
+Tornhill, Adam. 2015. Your Code as a Crime Scene: Use Forensic Techniques to Arrest Defects, Bottlenecks, and Bad Design in Your Programs. 1 edition. Dallas, Texas: Pragmatic Bookshelf.
+
+[GoodReads](https://www.goodreads.com/book/show/23627482-your-code-as-a-crime-scene)
 
 > A great overview of code-maat and other related code investigation techniques.  This was the book that started me looking at alternatives to traditional code metrics!
 
-## Papers
+### Making Software: What Really Works, and Why We Believe It <CitationAnchor>(Oram and Wilson 2010)</CitationAnchor>
 
-### Bell, Ostrand and Weyuker
+Oram, Andy, and Greg Wilson. 2010. Making Software: What Really Works, and Why We Believe It. 1 edition. O’Reilly Media.
 
-These folks have a bunch of papers about subsequent research, which I'm clumping together despite the alphabetical ordering being a bit strange (as they take turns as first author?)
+A collection of research work around a wide range of software areas - including a good summary of the Bell, Ostrand and Weyuker papers - these folks have a bunch of papers which build on each other:
 
-#### Looking for bugs in all the right places. <CitationAnchor>BOW06</CitationAnchor>
+* <Citation>(Ostrand, Weyuker, and Bell 2004)</Citation>
+* <Citation>(Bell, Ostrand, and Weyuker 2006)</Citation>
+* <Citation>(Ostrand, Weyuker, and Bell 2007)</Citation>
+* <Citation>(Weyuker, Ostrand, and Bell 2007)</Citation>
+* <Citation>(Weyuker, Ostrand, and Bell 2008)</Citation>
+* <Citation>(Weyuker, Ostrand, and Bell 2010)</Citation>
+* <Citation>(Bell, Ostrand, and Weyuker 2011)</Citation>
 
-Bell, R. M., Ostrand, T. J., & Weyuker, E. J. (2006, July). Looking for bugs in all the right places. In Proceedings of the 2006 international symposium on Software testing and analysis (pp. 61-72).
+There are probably more! TODO: see where they are now
 
-> Notes that most of their metrics are not much better than just looking at lines of code.
+## Papers on Metrics
 
-#### Using developer information as a factor for fault prediction.  <CitationAnchor>WOB07</CitationAnchor>
+### Predicting Fault Incidence Using Software Change History <CitationAnchor>(Graves et al. 2000)</CitationAnchor>
 
-Weyuker, E. J., Ostrand, T. J., & Bell, R. M. (2007, May). Using developer information as a factor for fault prediction. In Third International Workshop on Predictor Models in Software Engineering (PROMISE'07: ICSE Workshops 2007) (pp. 8-8). IEEE.
+Graves, T.L., A.F. Karr, J.S. Marron, and H. Siy. 2000. ‘Predicting Fault Incidence Using Software Change History’. IEEE Transactions on Software Engineering 26 (7): 653–61. https://doi.org/10.1109/32.859533.
 
-> This one adds developer info such as number of devs in recent release, number of new devs, cumulative devs during all prior releases
+### Does Code Decay? Assessing the Evidence from Change Management Data <CitationAnchor>(Eick et al. 2001)</CitationAnchor>
 
-#### Automating algorithms for the identification of fault-prone files <CitationAnchor>OWB07</CitationAnchor>
+Eick, S.G., T.L. Graves, A.F. Karr, J.S. Marron, and A. Mockus. 2001. ‘Does Code Decay? Assessing the Evidence from Change Management Data’. IEEE Transactions on Software Engineering 27 (1): 1–12. https://doi.org/10.1109/32.895984.
 
-Ostrand, T. J., Weyuker, E. J., & Bell, R. M. (2007, July). Automating algorithms for the identification of fault-prone files. In Proceedings of the 2007 international symposium on Software testing and analysis (pp. 219-227).
+### Where the Bugs Are <CitationAnchor>(Ostrand, Weyuker, and Bell 2004)</CitationAnchor>
 
-#### Do too many cooks spoil the broth? Using the number of developers to enhance defect prediction models <CitationAnchor>WOB08</CitationAnchor>
+Ostrand, Thomas J., Elaine J. Weyuker, and Robert M. Bell. 2004. ‘Where the Bugs Are’. In Proceedings of the 2004 ACM SIGSOFT International Symposium on Software Testing and Analysis, 86–96. ISSTA ’04. New York, NY, USA: Association for Computing Machinery. https://doi.org/10.1145/1007512.1007524.
 
-Weyuker, E. J., Ostrand, T. J., & Bell, R. M. (2008). Do too many cooks spoil the broth? Using the number of developers to enhance defect prediction models. Empirical Software Engineering, 13(5), 539-559.
+### Predicting Source Code Changes by Mining Change History <CitationAnchor>(Ying et al. 2004)</CitationAnchor>
 
-> Adding developer counts to their analysis. Useful but see notes above.
+Ying, A.T.T., G.C. Murphy, R. Ng, and M.C. Chu-Carroll. 2004. ‘Predicting Source Code Changes by Mining Change History’. IEEE Transactions on Software Engineering 30 (9): 574–86. https://doi.org/10.1109/TSE.2004.52.
 
-#### Comparing the effectiveness of several modeling methods for fault prediction. <CitationAnchor>WOB10</CitationAnchor>
+### Use of Relative Code Churn Measures to Predict System Defect Density <CitationAnchor>(Nagappan and Ball 2005)</CitationAnchor>
 
-Weyuker, E. J., Ostrand, T. J., & Bell, R. M. (2010). Comparing the effectiveness of several modeling methods for fault prediction. Empirical Software Engineering, 15(3), 277-295.
+Nagappan, Nachiappan, and Thomas Ball. 2005. ‘Use of Relative Code Churn Measures to Predict System Defect Density’. In Proceedings of the 27th International Conference on Software Engineering, 284–292. ICSE ’05. New York, NY, USA: Association for Computing Machinery. https://doi.org/10.1145/1062455.1062514.
 
-> mostly this is about different statistical modeling approaches.
+### Looking for Bugs in All the Right Places <CitationAnchor>(Bell, Ostrand, and Weyuker 2006)</CitationAnchor>
 
-#### Does measuring code change improve fault prediction? <CitationAnchor>BOW11</CitationAnchor>
+Bell, Robert M., Thomas J. Ostrand, and Elaine J. Weyuker. 2006. ‘Looking for Bugs in All the Right Places’. In Proceedings of the 2006 International Symposium on Software Testing and Analysis  - ISSTA’06, 61. Portland, Maine, USA: ACM Press. https://doi.org/10.1145/1146238.1146246.
 
-Bell, R. M., Ostrand, T. J., & Weyuker, E. J. (2011, September). Does measuring code change improve fault prediction?. In Proceedings of the 7th International Conference on Predictive Models in Software Engineering (pp. 1-8).
+### Using Software Dependencies and Churn Metrics to Predict Field Failures: An Empirical Case Study <CitationAnchor>(Nagappan and Ball 2007)</CitationAnchor>
 
-> looking at including code change info to their modeling
+Nagappan, Nachiappan, and Thomas Ball. 2007. ‘Using Software Dependencies and Churn Metrics to Predict Field Failures: An Empirical Case Study’. In First International Symposium on Empirical Software Engineering and Measurement (ESEM 2007), 364–73. Madrid, Spain: IEEE. https://doi.org/10.1109/ESEM.2007.13.
 
-### Don't touch my code! Examining the effects of ownership on software quality. <CitationAnchor>BNMGD11</CitationAnchor>
+### Automating Algorithms for the Identification of Fault-Prone Files <CitationAnchor>(Ostrand, Weyuker, and Bell 2007)</CitationAnchor>
 
-Bird, C., Nagappan, N., Murphy, B., Gall, H., & Devanbu, P. (2011, September). Don't touch my code! Examining the effects of ownership on software quality. In Proceedings of the 19th ACM SIGSOFT symposium and the 13th European conference on Foundations of software engineering (pp. 4-14).
+Ostrand, Thomas J., Elaine J. Weyuker, and Robert M. Bell. 2007. ‘Automating Algorithms for the Identification of Fault-Prone Files’. In Proceedings of the 2007 International Symposium on Software Testing and Analysis - ISSTA ’07, 219. London, United Kingdom: ACM Press. https://doi.org/10.1145/1273463.1273493.
 
-> Microsoft research, largely on Windows Vista and Windows 7 code
->
-> Seems a bit mixed between "code ownership" and "allowing 'low expertise' developers to make unsupervised changes" - maybe it's just my biases, but the conclusion seems to be that it's good to have single points of failure owning critical codebases, rather than working out the cultural / communication problems...
+### Using Developer Information as a Factor for Fault Prediction <CitationAnchor>(Weyuker, Ostrand, and Bell 2007)</CitationAnchor>
 
-### A metric for software readability <CitationAnchor>BW08</CitationAnchor>
+Weyuker, Elaine J., Thomas J. Ostrand, and Robert M. Bell. 2007. ‘Using Developer Information as a Factor for Fault Prediction’. In Third International Workshop on Predictor Models in Software Engineering (PROMISE’07: ICSE Workshops 2007), 8–8. Minneapolis, MN, USA: IEEE. https://doi.org/10.1109/PROMISE.2007.14.
 
-Buse, R. P., & Weimer, W. R. (2008, July). A metric for software readability. In Proceedings of the 2008 international symposium on Software testing and analysis (pp. 121-130).
+### A Metric for Software Readability <CitationAnchor>(Buse and Weimer 2008)</CitationAnchor>
 
-> An attempt to build up metrics around "readability" - whatever that means.
-> Has a broad range of sources used
+Buse, Raymond P.L., and Westley R. Weimer. 2008. ‘A Metric for Software Readability’. In Proceedings of the 2008 International Symposium on Software Testing and Analysis - ISSTA ’08, 121. Seattle, WA, USA: ACM Press. https://doi.org/10.1145/1390630.1390647.
 
-### Code Smells Quantification: A Case Study On Large Open Source Research Codebase. <CitationAnchor>Cha19</CitationAnchor>
+### Reading Beside the Lines: Indentation as a Proxy for Complexity Metric <CitationAnchor>(Hindle, Godfrey, and Holt 2008)</CitationAnchor>
 
-Chauhan, Swapnil Singh, "Code Smells Quantification: A Case Study On Large Open Source Research Codebase" (2019). Open Access Theses & Dissertations. 50. https://scholarworks.utep.edu/open_etd/50
+Hindle, Abram, Michael W. Godfrey, and Richard C. Holt. 2008. ‘Reading Beside the Lines: Indentation as a Proxy for Complexity Metric’. In 2008 16th IEEE International Conference on Program Comprehension, 133–42. https://doi.org/10.1109/ICPC.2008.13.
 
-> Interesting as it has a comparison of the state of an academic codebase (QGis) vs a commercial open-source codebase (tensor-flow) and discusses at least two styles of coding.
+### The Influence of Organizational Structure on Software Quality: An Empirical Case Study <CitationAnchor>(Nagappan, Murphy, and Basili 2008)</CitationAnchor>
 
-### Fractal figures: Visualizing development effort for cvs entities <CitationAnchor>DLG05</CitationAnchor>
+Nagappan, Nachiappan, Brendan Murphy, and Victor Basili. 2008. ‘The Influence of Organizational Structure on Software Quality: An Empirical Case Study’. In Proceedings of the 30th International Conference on Software Engineering, 521–530. ICSE ’08. New York, NY, USA: Association for Computing Machinery. https://doi.org/10.1145/1368088.1368160.
 
-D'Ambros, M., Lanza, M., & Gall, H. (2005, September). Fractal figures: Visualizing development effort for cvs entities. In 3rd IEEE International Workshop on Visualizing Software for Understanding and Analysis (pp. 1-6). IEEE.
+### Do Too Many Cooks Spoil the Broth? Using the Number of Developers to Enhance Defect Prediction Models <CitationAnchor>(Weyuker, Ostrand, and Bell 2008)</CitationAnchor>
 
-> This looks at ways to visualise, and categorise, developer effort - identifying code that is clustered around a few key owners, vs spread out across many
-> Not just visualisation, it gives an algorithm for producing a metric
-> TODO - it'd be interesting to add this to the Polyglot Code Explorer.
+Weyuker, Elaine J., Thomas J. Ostrand, and Robert M. Bell. 2008. ‘Do Too Many Cooks Spoil the Broth? Using the Number of Developers to Enhance Defect Prediction Models’. Empirical Software Engineering 13 (5): 539–59. https://doi.org/10.1007/s10664-008-9082-8.
 
-### On the relationship between change coupling and software defects <CitationAnchor>DLR09</CitationAnchor>
+### On the Relationship Between Change Coupling and Software Defects <CitationAnchor>(D’Ambros, Lanza, and Robbes 2009)</CitationAnchor>
 
-D'Ambros, M., Lanza, M., & Robbes, R. (2009, October). On the relationship between change coupling and software defects. In 2009 16th Working Conference on Reverse Engineering (pp. 135-144). IEEE.
+D’Ambros, Marco, Michele Lanza, and Romain Robbes. 2009. ‘On the Relationship Between Change Coupling and Software Defects’. In 2009 16th Working Conference on Reverse Engineering, 135–44. Lille, France: IEEE. https://doi.org/10.1109/WCRE.2009.19.
 
-> Quite detailed calculations showing correlation between tightly coupled code and defect levels
->
-> This is mostly around monolithic applications so uses specific commits not time windows - I probably need to track per-commit coupling as well, my coupling code is still under active development!
+### Predicting Faults Using the Complexity of Code Changes <CitationAnchor>(Hassan 2009)</CitationAnchor>
 
-### Does code decay? assessing the evidence from change management data. <CitationAnchor>EGKMM01</CitationAnchor>
+Hassan, Ahmed E. 2009. ‘Predicting Faults Using the Complexity of Code Changes’. In 2009 IEEE 31st International Conference on Software Engineering, 78–88. Vancouver, BC, Canada: IEEE. https://doi.org/10.1109/ICSE.2009.5070510.
 
-Eick, S. G., Graves, T. L., Karr, A. F., Marron, J. S., & Mockus, A. (2001). Does code decay? assessing the evidence from change management data. IEEE Transactions on Software Engineering, 27(1), 1-12.
+### Cross-Project Defect Prediction: A Large Scale Experiment on Data vs. Domain vs. Process <CitationAnchor>(Zimmermann et al. 2009)</CitationAnchor>
 
-> Quite old - the paper is from 2001, the code is older - fascinating for how giant long-lived projects operated in the 90s, and looking at ways to identify code decay. Even hints that "refactoring" might be of some value.
+Zimmermann, Thomas, Nachiappan Nagappan, Harald Gall, Emanuel Giger, and Brendan Murphy. 2009. ‘Cross-Project Defect Prediction: A Large Scale Experiment on Data vs. Domain vs. Process’. In Proceedings of the 7th Joint Meeting of the European Software Engineering Conference and the ACM SIGSOFT Symposium on The Foundations of Software Engineering on European Software Engineering Conference and Foundations of Software Engineering Symposium - ESEC/FSE ’09, 91. Amsterdam, The Netherlands: ACM Press. https://doi.org/10.1145/1595696.1595713.
 
-### Predicting fault incidence using software change history. <CitationAnchor>GKMS00</CitationAnchor>
+### Comparing the Effectiveness of Several Modeling Methods for Fault Prediction <CitationAnchor>(Weyuker, Ostrand, and Bell 2010)</CitationAnchor>
 
-Graves, T. L., Karr, A. F., Marron, J. S., & Siy, H. (2000). Predicting fault incidence using software change history. IEEE Transactions on software engineering, 26(7), 653-661.
+Weyuker, Elaine J., Thomas J. Ostrand, and Robert M. Bell. 2010. ‘Comparing the Effectiveness of Several Modeling Methods for Fault Prediction’. Empirical Software Engineering 15 (3): 277–95. https://doi.org/10.1007/s10664-009-9111-2.
 
-> Quite old - 2000, code from 1997
->
-> Concludes that older modules with large recent changes make for most faults.
+### Does Measuring Code Change Improve Fault Prediction? <CitationAnchor>(Bell, Ostrand, and Weyuker 2011)</CitationAnchor>
 
-### Predicting faults using the complexity of code changes <CitationAnchor>Has09</CitationAnchor>
+Bell, Robert M., Thomas J. Ostrand, and Elaine J. Weyuker. 2011. ‘Does Measuring Code Change Improve Fault Prediction?’ In Proceedings of the 7th International Conference on Predictive Models in Software Engineering - Promise ’11, 1–8. Banff, Alberta, Canada: ACM Press. https://doi.org/10.1145/2020390.2020392.
 
-Hassan, A. E. (2009, May). Predicting faults using the complexity of code changes. In 2009 IEEE 31st international conference on software engineering (pp. 78-88). IEEE.
+### Don’t Touch My Code!: Examining the Effects of Ownership on Software Quality <CitationAnchor>(Bird et al. 2011)</CitationAnchor>
 
-> Looks very interesting, needs a more detailed read
->
-> TODO: read this!
+Bird, Christian, Nachiappan Nagappan, Brendan Murphy, Harald Gall, and Premkumar Devanbu. 2011. ‘Don’t Touch My Code!: Examining the Effects of Ownership on Software Quality’. In Proceedings of the 19th ACM SIGSOFT Symposium and the 13th European Conference on Foundations of Software Engineering - SIGSOFT/FSE ’11, 4. Szeged, Hungary: ACM Press. https://doi.org/10.1145/2025113.2025119.
 
-### Reading beside the lines: Indentation as a proxy for complexity metric. <CitationAnchor>HGH08</CitationAnchor>
+### Non-Essential Changes in Version Histories <CitationAnchor>(Kawrykow and Robillard 2011)</CitationAnchor>
 
-Hindle, A., Godfrey, M. W., & Holt, R. C. (2008, June). Reading beside the lines: Indentation as a proxy for complexity metric. In 2008 16th IEEE International Conference on Program Comprehension (pp. 133-142). IEEE.
+Kawrykow, David, and Martin P. Robillard. 2011. ‘Non-Essential Changes in Version Histories’. In Proceeding of the 33rd International Conference on Software Engineering - ICSE ’11, 351. Waikiki, Honolulu, HI, USA: ACM Press. https://doi.org/10.1145/1985793.1985842.
 
-> This is the main reference for the indentation-as-complexity visualisation.
-> Interesting that they indicate standard deviation is a good way to look at indentation
+### Evaluating Complexity, Code Churn, and Developer Activity Metrics as Indicators of Software Vulnerabilities <CitationAnchor>(Shin et al. 2011)</CitationAnchor>
 
-### An empirical study on the impact of duplicate code <CitationAnchor>HSSHK12</CitationAnchor>
+Shin, Yonghee, Andrew Meneely, Laurie Williams, and Jason A. Osborne. 2011. ‘Evaluating Complexity, Code Churn, and Developer Activity Metrics as Indicators of Software Vulnerabilities’. IEEE Transactions on Software Engineering 37 (6): 772–87. https://doi.org/10.1109/TSE.2010.81.
 
-Hotta, K., Sasaki, Y., Sano, Y., Higo, Y., & Kusumoto, S. (2012). An empirical study on the impact of duplicate code. Advances in Software Engineering, 2012.
+### An Empirical Study on the Impact of Duplicate Code <CitationAnchor>(Hotta et al. 2012)</CitationAnchor>
 
-> What it says on the tin - trying to identify whether duplicate code is as bad as everyone assumes
+Hotta, Keisuke, Yui Sasaki, Yukiko Sano, Yoshiki Higo, and Shinji Kusumoto. 2012. ‘An Empirical Study on the Impact of Duplicate Code’. Advances in Software Engineering 2012: 1–22. https://doi.org/10.1155/2012/938296.
 
-### Non-essential changes in version histories <CitationAnchor>KR11</CitationAnchor>
+### Code Smells Quantification: A Case Study On Large Open Source Research Codebase <CitationAnchor>(Chauhan 2019)</CitationAnchor>
 
-Kawrykow, D., & Robillard, M. P. (2011, May). Non-essential changes in version histories. In 2011 33rd International Conference on Software Engineering (ICSE) (pp. 351-360). IEEE.
+Chauhan, Swapnil. 2019. ‘Code Smells Quantification: A Case Study On Large Open Source Research Codebase’. Open Access Theses & Dissertations, January. https://scholarworks.utep.edu/open_etd/50.
 
-> Improving change metrics by eliminating changes which are just trivial like indentation or variable renaming.
+### Attitudes, Beliefs, and Development Data Concerning Agile Software Development Practices <CitationAnchor>(Matthies et al. 2019)</CitationAnchor>
 
-> Sadly this is completely dependent on language-specific parsing to identify type signatures, so not much use for me.
+Matthies, Christoph, Johannes Huegle, Tobias Durschmid, and Ralf Teusner. 2019. ‘Attitudes, Beliefs, and Development Data Concerning Agile Software Development Practices’. In 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET), 158–69. Montreal, QC, Canada: IEEE. https://doi.org/10.1109/ICSE-SEET.2019.00025.
 
-### Visualization-based analysis of quality for large-scale software systems. <CitationAnchor>LSP05</CitationAnchor>
+### Source Code Properties of Defective Infrastructure as Code Scripts <CitationAnchor>(Rahman and Williams 2019)</CitationAnchor>
 
-Langelier, G., Sahraoui, H., & Poulin, P. (2005, November). Visualization-based analysis of quality for large-scale software systems. In Proceedings of the 20th IEEE/ACM international Conference on Automated software engineering (pp. 214-223).
-
-### Attitudes, beliefs and development data concerning agile software development practices <CitationAnchor>MHDT19</CitationAnchor>
-
-Matthies, C., Huegle, J., Dürschmid, T., & Teusner, R. (2019, May). Attitudes, beliefs, and development data concerning agile software development practices. In 2019 IEEE/ACM 41st International Conference on Software Engineering: Software Engineering Education and Training (ICSE-SEET) (pp. 158-169). IEEE.
-
-> Includes interesting stuff on detection of agile practices via code artifacts!
-
-### Use of relative code churn measures to predict system defect density <CitationAnchor>NB05</CitationAnchor>
-
-Nagappan, N., & Ball, T. (2005, May). Use of relative code churn measures to predict system defect density. In Proceedings of the 27th international conference on Software engineering (pp. 284-292).
-
-> Instead of absolute churn, looks at churn relative to (say) lines of code, different relative time scales
-
-> Windows Server 2003 codebase
-
-### The influence of organizational structure on software quality <CitationAnchor>NMB08</CitationAnchor>
-
-Nagappan, N., Murphy, B., & Basili, V. (2008, May). The influence of organizational structure on software quality. In 2008 ACM/IEEE 30th International Conference on Software Engineering (pp. 521-530). IEEE.
-
-> Using metrics like employee churn, position of developers on org chart - very cool stuff
-> They conclude it is more effective to use organisational metrics than code quality metrics!
-> Contains a useful summary of prior research too
->
-> TODO: read further
-
-### Source code properties of defective infrastructure as code scripts. <CitationAnchor>RW19</CitationAnchor>
-
-Rahman, A., & Williams, L. (2019). Source code properties of defective infrastructure as code scripts. Information and Software Technology, 112, 148-163.
-
-> Interesting to look at Infrastructure as Code - a different kind of code.  Includes correlations with number of static strings in codebases!
-
-### Evaluating complexity, code churn, and developer activity metrics as indicators of software vulnerabilities. <CitationAnchor>SMWO10</CitationAnchor>
-
-Shin, Y., Meneely, A., Williams, L., & Osborne, J. A. (2010). Evaluating complexity, code churn, and developer activity metrics as indicators of software vulnerabilities. IEEE transactions on software engineering, 37(6), 772-787.
-
-> Analysis of Firefox and the Linux kernel
-
-> TODO: this needs a more detailed read
-
-### Cross-project defect prediction: a large scale experiment on data vs. domain vs. process. <CitationAnchor>ZNGGM09</CitationAnchor>
-
-Zimmermann, T., Nagappan, N., Gall, H., Giger, E., & Murphy, B. (2009, August). Cross-project defect prediction: a large scale experiment on data vs. domain vs. process. In Proceedings of the 7th joint meeting of the European software engineering conference and the ACM SIGSOFT symposium on The foundations of software engineering (pp. 91-100).
-
-> Microsoft research, but not on just their code but others
->
-> lots of cool metrics and whether they actually work across projects and orgs. For example IE vs Firefox.
->
-> TODO: needs more detailed reading
+Rahman, Akond, and Laurie Williams. 2019. ‘Source Code Properties of Defective Infrastructure as Code Scripts’. Information and Software Technology 112 (August): 148–63. https://doi.org/10.1016/j.infsof.2019.04.013.
 
 ## Still to find and read
 
