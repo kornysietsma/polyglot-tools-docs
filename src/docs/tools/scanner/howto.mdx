@@ -2,21 +2,50 @@
 title: 'How to run the Polyglot Code Scanner'
 ---
 
-The code scanner is a rust program - this means I should be able to build and publish binary executables so you don't need to know anything about rust.
+The code scanner is a rust command-line program - which means applications are compiled executable binary files, which you run from a terminal.
 
-But I haven't done that yet - sorry!
+There are two ways to run the scanner - download a binary executable for your platform, or build it yourself from source.
 
-So you'll need to compile a binary yourself.
+*NOTE* I haven't been able to test the binary releases myself on many platforms, so if these don't work, you might have to revert to compiling yourself.  (Feel free to [raise an issue](https://github.com/kornysietsma/polyglot-code-scanner/issues) though, and I'll try to fix it)
+
+## Fetching binary releases
+
+Binary releases are published to <https://github.com/kornysietsma/polyglot-code-scanner/releases>
+
+You should be able to download the right file for your platform here.  Note I haven't tested this at all on Windows yet!  And I only have a single generic build for linux x86 and OSX - I can add more if there's demand.
+
+### Getting it to work on mac OSX
+
+OSX has a system to protect you from malware, called 'gatekeeper' - by default on OSX if you try to run the binary app, you'll get an error "app is from an unknown developer".  To bypass this I'd have to go through a complex extra stage of signing and bundling my tool as an application, which I'm avoiding for now.
+
+If you are happy that the binary is safe - all the code that builds it is on github, so you should be able to inspect it yourself - you have two options to run it:
+
+1. Add an exception - you can tell OSX it is safe by following the instructions at https://support.apple.com/en-gb/guide/mac-help/mh40616/mac
+2. Remove the attribute with `xattrs`
+
+The second option is much simpler:
+
+```sh
+tar zxf polyglot-code-scanner-vwhatever-x86_64-apple-darwin.tar.gz
+cd polyglot-code-scanner-vwhatever-x86_64-apple-darwin
+xattr -d com.apple.quarantine polyglot_code_scanner
+```
+
+Then you can move the `polyglot_code_scanner` binary to whever you want.
+
+If you don't want to trust the binary, follow the steps below to compile it yourself.
 
 ## Fetching code and compiling a binary
 
-1. Get rust - instructions are at <https://www.rust-lang.org/tools/install>
-2. Clone or fork the project from https://github.com/kornysietsma/polyglot-code-scanner
+1. Get rust and cargo - instructions are at <https://www.rust-lang.org/tools/install>
+2. Clone or fork the project from <https://github.com/kornysietsma/polyglot-code-scanner>
+  
+    Or you can fetch the source code for a particular release from <https://github.com/kornysietsma/polyglot-code-scanner/releases>
 3. test and build with `cargo` the rust packaging tool:
 
 ```sh
 $ cargo test
-# ... lots of warnings but hopefully no failures
+# ... maybe some warnings but hopefully no failures
 $ cargo build --release
 # ... lots of messages and noise - compiling can be slow
 $ ls -l target/release
@@ -31,7 +60,7 @@ drwxr-xr-x    2 korny  staff       64 20 Jun 15:20 incremental
 -rw-r--r--    1 korny  staff     1063 29 Jun 14:45 polyglot_code_scanner.d
 
 $ target/release/polyglot_code_scanner -V
-polyglot_code_scanner 0.0.2
+polyglot_code_scanner 0.1.2
 ```
 
 All you need to care about is the binary `polyglot_code_scanner` - that's what you need to run.  You can run it from the target directory or copy it somewhere useful.
