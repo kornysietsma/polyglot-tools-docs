@@ -2,11 +2,34 @@
 title: 'How to run the Polyglot Code Offline Layout script'
 ---
 
-The offline layout script - it's too generous to call it an application! - is run as a node.js script; you'll need to install node.js to run it.
+The offline layout script - it's too generous to call it an application! - is run as a node.js script; you'll need to install node.js to run it, or you can fetch a binary release which bundles up node.js and the script into a single executable.
 
 Apologies that this is fairly clunky at the moment - this script largely exists because the voronoi layout I wanted to use was far too slow to run in a browser, especially as it fails pretty often (see [the docs](/tools/layout/description) for more).
 
-You can run this script using node.js, or via Docker
+You can run this script via the executable or the bundled binary:
+
+## Binary executables
+
+I am using [pkg](https://www.npmjs.com/package/pkg) to package up runnable executables.
+
+### Fetching binary releases
+
+Binary releases are published to <https://github.com/kornysietsma/polyglot-code-offline-layout/releases>
+
+You should be able to download the right file for your platform here.  Note I haven't tested this at all on Windows yet!  And I only have a single generic build for linux and OSX - if you are on another platform, you'll have to use node.js for now.
+
+### Getting binaries to work on mac OSX
+
+OSX has a system to protect you from malware, called 'gatekeeper' - by default on OSX if you try to run the binary app, you'll get an error "app is from an unknown developer".  To bypass this I'd have to go through a complex extra stage of signing and bundling my tool as an application, which I'm avoiding for now.
+
+If you are happy that the binary is safe - all the code that builds it is on github, so you should be able to inspect it yourself - you can run it by stripping the extra attributes that OSX adds when you download it:
+
+```sh
+unzip polyglot-code-offline-layout-macos.zip
+xattr -d com.apple.quarantine polyglot-code-offline-layout
+```
+
+Then you can move the `polyglot-code-offline-layout` binary to wherever you want.
 
 ## Running this script using node.js
 

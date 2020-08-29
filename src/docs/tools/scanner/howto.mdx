@@ -18,12 +18,7 @@ You should be able to download the right file for your platform here.  Note I ha
 
 OSX has a system to protect you from malware, called 'gatekeeper' - by default on OSX if you try to run the binary app, you'll get an error "app is from an unknown developer".  To bypass this I'd have to go through a complex extra stage of signing and bundling my tool as an application, which I'm avoiding for now.
 
-If you are happy that the binary is safe - all the code that builds it is on github, so you should be able to inspect it yourself - you have two options to run it:
-
-1. Add an exception - you can tell OSX it is safe by following the instructions at https://support.apple.com/en-gb/guide/mac-help/mh40616/mac
-2. Remove the attribute with `xattrs`
-
-The second option is much simpler:
+If you are happy that the binary is safe - all the code that builds it is on github, so you should be able to inspect it yourself - you can run it by stripping the extra attributes that OSX adds when you download it, using `xattr`:
 
 ```sh
 tar zxf polyglot-code-scanner-vwhatever-x86_64-apple-darwin.tar.gz
