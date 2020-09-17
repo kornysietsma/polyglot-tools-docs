@@ -8,12 +8,12 @@
 <url> <loc>https://polyglot.korny.info/tools/scanner/description/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/explorer/code/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/layout/description/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://polyglot.korny.info/tools/layout/howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/scanner/howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/explorer/description/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/explorer/data-format/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://polyglot.korny.info/tools/explorer/howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/history/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/metrics/indentation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/explorer/ui/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://polyglot.korny.info/tools/explorer/howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://polyglot.korny.info/tools/layout/howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 </urlset>
