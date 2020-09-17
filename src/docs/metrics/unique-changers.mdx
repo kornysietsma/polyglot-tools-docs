@@ -1,0 +1,15 @@
+# Visualising Unique Changers
+(back to [metrics overview](/metrics/overview))
+
+![unique changers](../images/metrics/vis_unique_changers.png)
+
+This shows how many different people touched a file, in the selected date range. Again is a bit of an "it depends" metric - some studies show that few changers are good, as they tend to be just experts and not new inexperienced people.  But again, too few changers can be a sign that only one person knows a piece of code, so you don't have any collective code ownership, and if that one person leaves, you might have some unknown code.  (There's some really interesting research in this area, which I'd love to look into in the future - such as looking at how new/old each changer is to the organisation, how long they've been touching this area of the code, and the like).
+
+This has a custom colour scheme because it's not as simple as good/bad.  Basically:
+
+- No changers is bad, so it's highlighted in cyan.  This probably means that no-one currently understands the code at all.
+- One changer might be OK, though I'd see it as an ownership risk.  This is shown in dark red.
+- Two to Eight coders is, in my view, generally OK.  This is a "two-pizza team" - it's fine for the whole team to be changing a file.
+- Eight to 30 coders is definitely risky - maybe the file is tightly coupled with several areas of code, or full of bugs so people keep needing to fix it. High numbers are in brighter colours.
+
+_Note_ there is one current limitation here - the system treats unique user names / emails as unique individuals.  So if you change email or git account, you will look like two people.  I plan to add some way to flag duplicate names - possibly using [the pretty obscure git .mailmap file format](https://www.git-scm.com/docs/git-check-mailmap).  But this is a fair way down my to-do list.

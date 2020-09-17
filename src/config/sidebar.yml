@@ -14,6 +14,8 @@
       link: '/tools/scanner/description'
     - label: 'Polyglot Code Offline Layout'
       link: '/tools/layout/description'
+- label: 'Metrics and Visualisations'
+  link: '/metrics/overview'
 - label: 'How To guides'
   items:
     - label: 'How to run the Explorer'
@@ -30,3 +32,5 @@
       link: /bibliography
     - label: 'Future plans'
       link: /future-plans
+    - label: 'FAQ'
+      link: /faq

@@ -17,7 +17,9 @@ The source code is on GitHub:
 * <https://github.com/kornysietsma/polyglot-code-offline-layout>
 * <https://github.com/kornysietsma/polyglot-code-explorer>
 
-## What are the Polyglot Code Tools ?
+> I should add a disclaimer - I am not a rust guru, and I am definitely not a react guru!  This is side project code, not commercial-quality - it may well have bugs, mistakes, ugliness, and it has far less testing than I'd usually expect :)
+
+## What are the Polyglot Code Tools?
 
 These are a bunch of tools I've been building in bits and pieces over the past few years, in an attempt to answer the question:
 
@@ -31,9 +33,11 @@ It is far quicker for me to look at a diagram and see some unusual colouring in 
 
 ### Why polyglot?
 
-I've worked in many programming languages over the years, and many of them don't have good or easy code quality tools - either they are too new for a community to have built them, or they are from legacy projects where even if such tools exist, getting them up and running is a real hassle.
+Polyglot means "speaking multiple languages" - in this case, it means these tools should work, to some degree, for any text-based programming language.
 
-Also many programs don't use a single language - we have a number of great programming languages with special "sweet spots" and it's quite common to have UIs built in a quite different language to services or systems tools.  But comparing them with language-specific tools is almost impossible - and there's a big risk of comparing apples with oranges and getting a not very useful view.
+I've worked in many programming languages over the years, and many of them don't have good or easy code quality tools - either they are too new for a community to have built them, or they are from ancient projects where even if such tools exist, getting them up and running is a headache.  And each tool probably produces different metrics in different formats - it's hard to get any sort of big-picture view.
+
+Also many real-world systems don't use a single language - often it is better to use specialist languages for different tasks, rather than one general-purpose one.  For example one project might have a UI built in JavaScript and HTML, a microservice built in Kotlin and a platform automation tool build in Rust.
 
 ### Where did this come from?
 
@@ -41,9 +45,9 @@ The basic ideas came from [Erik Dörnenberg's articles on Toxic code visualisati
 
 See also [History](/history) for more about how this all started.
 
-## Polyglot Code Tools
+## The Polyglot Code Explorer
 
-The main code visualisation tool consists of three tightly coupled applications:
+I talk about "tools" here, but at the moment there is really one main application, the [Polyglot Code Explorer](/tools/explorer/description) - which is the front-end component of three tightly coupled applications:
 
 ![Tools flowchart](/images/flowchart.png)
 
