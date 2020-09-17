@@ -7,6 +7,16 @@ import Citation from '../components/Citation.js'
 
 *TL;DR:* If you don't want to read all this, jump in and have a play with [the Polyglot Code Explorer](http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/) or [another sample with multiple codebases](http://polyglot-code-explorer-openmrs.s3-website.eu-west-2.amazonaws.com/)
 
+I've also [recently written an introduction to these tools on my blog](https://blog.korny.info/2020/09/06/introducing-the-polyglot-code-explorer.html) - and [talked about them on the ThoughtWorks tech podcast](https://www.thoughtworks.com/podcasts/code-visualization).
+
+----
+
+The source code is on GitHub:
+
+* <https://github.com/kornysietsma/polyglot-code-scanner>
+* <https://github.com/kornysietsma/polyglot-code-offline-layout>
+* <https://github.com/kornysietsma/polyglot-code-explorer>
+
 ## What are the Polyglot Code Tools ?
 
 These are a bunch of tools I've been building in bits and pieces over the past few years, in an attempt to answer the question:
@@ -23,7 +33,7 @@ It is far quicker for me to look at a diagram and see some unusual colouring in 
 
 I've worked in many programming languages over the years, and many of them don't have good or easy code quality tools - either they are too new for a community to have built them, or they are from legacy projects where even if such tools exist, getting them up and running is a real hassle.
 
-Also many programs don't use a single language - we have a number of great programming languages with special "sweet spots" and it's quite common to have UIs built in a quite different language to services or systems tools.  But comparing them with language-specific tools is almost impossible - and there's a big risk of comparing Apples with Oranges and getting a not very useful view.
+Also many programs don't use a single language - we have a number of great programming languages with special "sweet spots" and it's quite common to have UIs built in a quite different language to services or systems tools.  But comparing them with language-specific tools is almost impossible - and there's a big risk of comparing apples with oranges and getting a not very useful view.
 
 ### Where did this come from?
 
@@ -31,17 +41,15 @@ The basic ideas came from [Erik Dörnenberg's articles on Toxic code visualisati
 
 See also [History](/history) for more about how this all started.
 
-There ~are two~ is really only one tool for general use at the moment:
+## Polyglot Code Tools
 
-## Polyglot Code Explorer
+The main code visualisation tool consists of three tightly coupled applications:
 
-This is really three tightly coupled applications:
+![Tools flowchart](/images/flowchart.png)
 
-* [Polyglot Code Explorer](/tools/explorer/description) - this is the front-end visualisation tool
-* [Polyglot Code Scanner](/tools/scanner/description) - this is a back-end tool, which scans directories of source code in many weird and wonderful ways, to produce a big data file for the explorer
-* [Polyglot Code Offline Layout](/tools/layout/description) - this is a second stage processing script which calculates the layout information needed by the explorer - this is too slow to run in a browser so runs standalone!
+You use the [Polyglot Code Scanner](/tools/scanner/description) to scan your source code and produce a data file, then the [Polyglot Code Offline Layout](/tools/layout/description) tool to add layout information to the data file, and finally the [Polyglot Code Explorer](/tools/explorer/description) to view it in a browser.
 
-For an overview of how to actually use these apps, look at the [How To](/tools/explorer/howto) page.
+For an overview of how to actually use these apps, look at the [Explorer How To](/tools/explorer/howto) page.
 
 You can see a demo of the explorer in action at <http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/> (this might not quite match these docs, as I sometimes use it as a playground).
 
