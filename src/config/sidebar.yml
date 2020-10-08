@@ -14,6 +14,8 @@
       link: '/tools/scanner/description'
     - label: 'Polyglot Code Offline Layout'
       link: '/tools/layout/description'
+    - label: 'Simple Code Server'
+      link: '/tools/simple-code-server'
 - label: 'Metrics and Visualisations'
   link: '/metrics/overview'
 - label: 'How To guides'

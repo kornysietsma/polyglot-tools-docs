@@ -63,6 +63,18 @@ cp ~/data/qgis-voronoi.json ./public/data/qgis.json
 REACT_APP_EXPLORER_DATA=qgis BROWSER=none yarn start
 ```
 
+## Viewing source code
+
+This is a recent feature, it is only in explorer 0.4.0 and above.
+
+You can run the [Simple Code Server](/tools/simple-code-server) to serve up the original source code that you scanned, and then view the code for a file in the Explorer.
+
+Note this breaks the simple code -> JSON -> view model a bit - you need all the original source code available to view code this way, rather than just the summary JSON file.  But it's quite convenient for rapidly previewing code, or when looking at private code repositories that might not be on a well known github or other URL.
+
+See the notes in the [Simple Code Server](/tools/simple-code-server) description page for how to use this.  (I need to update these docs to make this all a bit clearer!)
+
+## See also
+
 See the [polyglot-code-scanner](/tools/scanner/howto) and [polyglot-code-offline-layout](/tools/layout/howto) howto guides for more on the parameters these apps take.
 
 See the [Explorer user interface](/tools/explorer/ui) page for more on how to use the explorer once it is running.
