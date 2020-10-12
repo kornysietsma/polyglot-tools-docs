@@ -4,6 +4,8 @@
   link: '/'
 - label: 'Overview'
   link: '/overview'
+- label: 'News'
+  link: '/news'
 - label: Tools
   items:
     - label: 'Polyglot Code Explorer'
