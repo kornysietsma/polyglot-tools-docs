@@ -76,6 +76,30 @@ Usually you will just run:
 
 "--coupling" - enables temporal coupling.  This can be very very slow to calculate - if you don't want it, don't specify this option!  TODO: link to temporal coupling explanation
 
+## Handling multiple repositories
+
+The scanner actually works in terms of directories and subdirectories, rather than really caring too much about git repositories.  (It's even possible to work with code without git data - in theory, though this is probably broken once you try to visualise the results)
+
+So you can store git repositories _under_ the scanned root directory - it's quite common to check out every repository for a project as children of the root directory, and then use the `--circles` layout option to show those repositories as top-level circles in the explorer.
+
+You can even go deeper - one project I worked on had a nested tree of directories and projects 2 or 3 levels under the root; the scanner handles this just fine.
+
+## Ignoring files
+
+The scanner automatically ignores any files that git ignores, using the standard `.gitignore` file mechanisms.
+
+You can also add your own ignore files - at the root, or anywhere in subdirectories - the scanner will look for files called `.polyglot_code_scanner_ignore` files anywhere in the codebase, the syntax is [the same as .gitignore's](https://git-scm.com/docs/gitignore).
+
+So for example if you want to ignore node.js junk, XML and CSV files you could add a `.polyglot_code_scanner_ignore` file at the root of your project with the content:
+
+~~~
+node_modules/
+package-lock.json
+yarn.lock
+*.xml
+*.csv
+~~~
+
 ## Output file
 
 See [Data Format](/tools/explorer/data-format) for a description of the output JSON file format.

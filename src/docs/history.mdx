@@ -14,7 +14,7 @@ So Ra-el and I threw together some code, using [cloc](https://github.com/AlDania
 
 I tinkered with this for a while - it basically worked, but stalled a bit.  It was hard to extend beyond what code-maat offered - I added a module for indentation-based complexity, but both the scanning side and the visualisation were lacking - especially the visualisation, it was hard to change, and treemaps are just a bit ugly.
 
-TODO: insert a treemap screenshot
+![Old explorer](images/old_tool_ui.png)
 
 And that's where things sat from 2016 to 2018.  I did a bit of packaging up, cleaning up, I talked about it at a few ThoughtWorks internal conferences, and at the UCL's [The 59th CREST Open Workshop - Multi-language Software Analysis](http://crest.cs.ucl.ac.uk/cow/59/) - and then didn't do much more.  (I also had a lovely toddler who took up a lot of my tinkering time!)
 
@@ -26,7 +26,7 @@ I then had a gap between projects, and thought it'd be fun to re-implement my cl
 
 So I started what is now the polyglot-code-scanner.  It went remarkably smoothly - the existing rust libraries meant I could ditch code-maat and build everything in one rust program.
 
-The UI was still pretty ugly though. I knew what I wanted - I'd done some reading, and found that Voronoi treemaps (*TODO* link to a page on this) were probably the presentation I wanted - but they were a lot of work to get running.  Also, my UI was hard to change - I was using just D3 and otherwise mostly raw javascript, and it was hard to make it interactive.
+The UI was still pretty ugly though. I knew what I wanted - I'd done some reading, and found that [Voronoi treemaps](/tools/layout/description#what-is-a-weighted-voronoi-treemap) were probably the presentation I wanted - but they were a lot of work to get running.  Also, my UI was hard to change - I was using just D3 and otherwise mostly raw javascript, and it was hard to make it interactive.
 
 Later in 2019 I worked on a project with some react, however, and it was pretty obvious that what I wanted was a new react-based UI.  I also found the [d3-voronoi-treemap](https://github.com/Kcnarf/d3-voronoi-treemap) library, which appeared to give me an option of building the layout I wanted, in D3!
 
