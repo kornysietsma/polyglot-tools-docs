@@ -6,6 +6,27 @@ The Polyglot Code Explorer relies on a JSON file format, which is fairly loose a
 
 The format is based on files used in d3 demonstrations, usually called "flare" - though I'm not sure where the name came from.
 
+## Update and Work In Progress
+
+The structure below predates changes in August 2022.
+
+The data format has changed, and is now versioned!
+
+More docs are to follow, but the basic file structure is now:
+
+```json
+{
+  "version": "1.0.0",
+  "name": "My Project",
+  "id": "55cdafb0-8c6e-40fc-a33b-4a7c90f0e0af",
+  "tree": {
+    ... same as below
+  }
+}
+```
+
+**Docs from here on have not been updated for the new data format**
+
 ## Basic structure
 
 The main structure is a tree of nodes and children

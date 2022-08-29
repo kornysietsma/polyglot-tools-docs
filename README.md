@@ -1,7 +1,7 @@
 # Polyglot Tools Documentation
 
-This is very much incomplete - I'm just pushing it to github so I can experiment with publishing it, don't read this yet!
+The source of the polyglot tools docs
 
-Docs are published to <https://kornysietsma.github.io/polyglot-tools-docs/> when I get around to it.
+Docs are published to <https://polyglot.korny.info/> when releases are made.
 
 Note to self - republish this site with `yarn run deploy`
