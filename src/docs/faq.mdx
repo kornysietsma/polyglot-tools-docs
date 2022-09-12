@@ -25,3 +25,15 @@ Most importantly, I'm a huge fan of the UK Government Digital Services, and [the
 > ... use ‘organise’ not ‘organize’, ‘modelling’ not ‘modeling’, and ‘fill in a form’, not ‘fill out a form’.
 
 **TL;DR**: I'm using 'visualise' and 'visualisation'
+
+## Why can't I see the 'LICENSE' file
+
+Files are pruned from the file tree if they have zero lines of code, as it wouldn't be possible to show a file with zero lines of code, the size of display is proportional to the code lines!
+
+The current parser I use sees a `LICENSE` file as all comments, so it shows as zero lines of code, and gets pruned.
+
+I might need to rethink this if I ever have alternate layout choices such as showing files by bytes - but that's a long way off.
+
+## Why are there users who have no file changes
+
+Sometimes users show up in the git logs modifying files that later get pruned so the user has no visible changes.  So far, all the cases I've looked at like this were people who only changed files with no lines of code, which are pruned - see the previous question!

@@ -13,12 +13,16 @@ A brief list of changes - see individual project changelogs for more:
 * Moved the explorer to Typescript - this was a lot of work, but makes development and refactoring much easier.
 * Modified the shared JSON data format, partly as it didn't work well with Typescript, partly as I want to make tweaks.  The docs will need updating!
 * Added version numbers to the data format, so the Explorer can test it is using a data file that matches it's code!
-* Added project name, and per-run ID (usually a UUID) to the data format, mostly for user friendliness, but also so I can check when saving state in the Explorer that it relates to the correct data file
+* Added project name, and per-run ID (usually a UUID) to the data format.  The name is nice for the main UI, the UUID allows for saving state safely in browser local storage.
 
 ### In progress
 
 * Adding a lot of features to the Explorer for viewing users and teams.  There is a lot of value in knowing which teams made which changes, who "owns" what code, and the like.  Previously I had the "code owners" visualization but it didn't really work - now the user can manually set up teams and then visualize their activity.
 * This however means that I needed a way to save user-created teams - so there will be options to save state both in the browser, and as files on disk.
+
+This is what viewing a project by team currently looks like:
+
+![Displaying users and teams](/images/new_2022/v060alpha1_teams.png)
 
 ## 2022-04-26
 

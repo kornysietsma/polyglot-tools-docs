@@ -83,7 +83,9 @@ The root node has data that is relevant for the whole project:
 
 `git_meta/users` is a mapping of user identity to unique sequential IDs.  This is mostly to save space!  The git data repeats the same users over and over - files would be much larger, and much slower to process, if the user names and emails were denormalised across the whole file.
 
-In future there may also be the ability here to flag users as aliases of each other (often one person has more than one git identity).
+Note that users who differ only by case, e.g. "Jane mcDoe" vs "Jane McDoe" will be merged by default (as of data format v1.0.0) to avoid too many duplicate user names (yes, this happened to me - mostly where people use `<Co-authored-by>` tags but entered names by hand)
+
+In the explorer there will be options in the future to alias users - grouping duplicate users and renaming them if desired.
 
 ## Directory nodes
 

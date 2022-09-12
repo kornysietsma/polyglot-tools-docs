@@ -7,9 +7,9 @@ This shows how many different people touched a file, in the selected date range.
 
 This has a custom colour scheme because it's not as simple as good/bad.  Basically:
 
-- No changers is bad, so it's highlighted in cyan.  This probably means that no-one currently understands the code at all.
+- No changers is probably bad, so it's highlighted in cyan.  This may mean that no-one currently understands the code at all.  Which might be fine, if it is very stable and well documented and tested - but often it is a risk.
 - One changer might be OK, though I'd see it as an ownership risk.  This is shown in dark red.
 - Two to Eight coders is, in my view, generally OK.  This is a "two-pizza team" - it's fine for the whole team to be changing a file.
 - Eight to 30 coders is definitely risky - maybe the file is tightly coupled with several areas of code, or full of bugs so people keep needing to fix it. High numbers are in brighter colours.
 
-_Note_ there is one current limitation here - the system treats unique user names / emails as unique individuals.  So if you change email or git account, you will look like two people.  I plan to add some way to flag duplicate names - possibly using [the pretty obscure git .mailmap file format](https://www.git-scm.com/docs/git-check-mailmap).  But this is a fair way down my to-do list.
+_Note_ there is one current limitation here - the system treats unique user names / emails as unique individuals.  So if you change email or git account, you will look like two people.  As of version 0.6 of the explorer, you can alias multiple users together - this should fix the problem.
