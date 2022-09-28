@@ -2,6 +2,40 @@
 
 As things change I'll try to add them here, newest changes at the top. (Note that each project has a changelog.md file on github as well)
 
+## 2022-09-28
+
+I've pushed new releases of the tools to github.  Sadly, the mechanism I used to build rust binaries no longer works - for the scanner, you need to build binaries yourself for now.  The bundled versions of the other tools should be OK though.
+
+Recent changes:
+
+### It works for non-git projects
+
+You can disable git scanning! This was something I've wanted for a while - often, especially for legacy code, it isn't stored in git.  If you disable git you lose a lot of features - there is no history of changes, no user information, etc. - but you can at least look at lines of code, indentation, and the rest.  File creation and last modification times are stored, so if they are meaningful you can look at code age based on those.
+
+I could add support for non-git SCM systems - but it's quite a bit of work.  I suspect it will only happen if I find the need to do this for a paying client!
+
+### You can visualise users and teams
+
+You can now view all users in your project, and view changes made by each user. You can also 'alias' users - often one user may have made commits with multiple email addresses or user names, you can merge these together into an alias, so they look like changes made by a single user.
+
+You can also assign users to teams, and then visualise those teams - which teams changed which files, and so on.  Proper documentation for this is to come!
+
+### You can save and restore user settings
+
+The above changes had one big problem - there was no way to save them.  To view team activity you need to assign users to teams, possibly with aliases, and then map teams to colours and the rest - but the minute you closed your browser window, all of that was lost.
+
+So now:
+
+* You can save all explorer settings, including user and team info, to a JSON file, and then re-load them later
+* You can also save settings to browser local storage, so you can quickly reload settings without faffing around with files
+* You can save _just_ user and team info to a JSON file.  This is a separate function as this file might be useful across different projects which share users.
+
+### Other bits and pieces
+
+* Code ownership logic was removed - it didn't work well, and it makes more sense to visualise teams. Note that you can create teams with a single person in them if you want to look at individual contributions.
+* Feature flags were added to the config files
+* Quite a few refactorings were made along the way
+
 ## 2022-08-29
 
 I am on sabbatical!  A number of changes are incoming, and I'll try to keep basic docs updated, but they may lag behind the source.

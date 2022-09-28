@@ -2,33 +2,15 @@
 title: 'How to run the Polyglot Code Scanner'
 ---
 
-The code scanner is a rust command-line program - which means applications are compiled executable binary files, which you run from a terminal.
+The code scanner is a rust command-line program - which means applications are compiled executable binary files, which you run from a text command-line.
 
 There are two ways to run the scanner - download a binary executable for your platform, or build it yourself from source.
 
-*NOTE* I haven't been able to test the binary releases myself on many platforms, so if these don't work, you might have to revert to compiling yourself.  (Feel free to [raise an issue](https://github.com/kornysietsma/polyglot-code-scanner/issues) though, and I'll try to fix it)
-
 ## Fetching binary releases
 
-Binary releases are published to <https://github.com/kornysietsma/polyglot-code-scanner/releases>
+Binary releases are _no longer_ being published to <https://github.com/kornysietsma/polyglot-code-scanner/releases>  - the old docs for binary releases are moved for now to [here](/tools/scanner/binaries-howto/).
 
 You should be able to download the right file for your platform here.  Note I haven't tested this at all on Windows yet!  And I only have a single generic build for linux x86 and OSX - I can add more if there's demand.
-
-### Getting it to work on mac OSX
-
-OSX has a system to protect you from malware, called 'gatekeeper' - by default on OSX if you try to run the binary app, you'll get an error "app is from an unknown developer".  To bypass this I'd have to go through a complex extra stage of signing and bundling my tool as an application, which I'm avoiding for now.
-
-If you are happy that the binary is safe - all the code that builds it is on github, so you should be able to inspect it yourself - you can run it by stripping the extra attributes that OSX adds when you download it, using `xattr`:
-
-```sh
-tar zxf polyglot-code-scanner-vwhatever-x86_64-apple-darwin.tar.gz
-cd polyglot-code-scanner-vwhatever-x86_64-apple-darwin
-xattr -d com.apple.quarantine polyglot_code_scanner
-```
-
-Then you can move the `polyglot_code_scanner` binary to whever you want.
-
-If you don't want to trust the binary, follow the steps below to compile it yourself.
 
 ## Fetching code and compiling a binary
 
@@ -55,7 +37,7 @@ drwxr-xr-x    2 korny  staff       64 20 Jun 15:20 incremental
 -rw-r--r--    1 korny  staff     1063 29 Jun 14:45 polyglot_code_scanner.d
 
 $ target/release/polyglot_code_scanner -V
-polyglot_code_scanner 0.1.2
+polyglot_code_scanner 0.3.3
 ```
 
 All you need to care about is the binary `polyglot_code_scanner` - that's what you need to run.  You can run it from the target directory or copy it somewhere useful.
@@ -68,13 +50,19 @@ You can run `polyglot_code_scanner -h` for command-line help.
 
 Usually you will just run:
 
-`polyglot_code_scanner --coupling -o json_file_name.json <source directory>`
+`polyglot_code_scanner --name <projectname> --coupling -o json_file_name.json <source directory>`
 
 ### Important options
 
-"--years <git_years>" - scan through this much history.  Git scanning can be slow, and often you only care about the last few years.
+`--name <name>` - you need to specify a name, so the Explorer can display the name and use it when saving and loading settings to avoid collisions.
 
-"--coupling" - enables temporal coupling.  This can be very very slow to calculate - if you don't want it, don't specify this option!  TODO: link to temporal coupling explanation
+`--years <git_years>` - scan through this much history.  Git scanning can be slow, and often you only care about the last few years.
+
+`--coupling` - enables temporal coupling.  This can be very very slow to calculate - if you don't want it, don't specify this option!  TODO: link to temporal coupling explanation
+
+`--follow-symlinks` - allows the scanner to follow symbolic links
+
+`--no-git` - do not scan for git information at all - this can speed up processing significantly, and is needed for projects not stored in git
 
 ## Handling multiple repositories
 
@@ -83,6 +71,8 @@ The scanner actually works in terms of directories and subdirectories, rather th
 So you can store git repositories _under_ the scanned root directory - it's quite common to check out every repository for a project as children of the root directory, and then use the `--circles` layout option to show those repositories as top-level circles in the explorer.
 
 You can even go deeper - one project I worked on had a nested tree of directories and projects 2 or 3 levels under the root; the scanner handles this just fine.
+
+You can also use symbolic links to your actual repositories - pass the `--follow-symlinks` parameter to enable this.  (by default symbolic links are ignored as some repositories use symlinks in strange ways)
 
 ## Ignoring files
 

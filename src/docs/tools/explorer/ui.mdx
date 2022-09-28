@@ -8,6 +8,8 @@ A typical front end of the Explorer looks like this:
 
 ![Explorer user interface](../../images/ui_guide/Main_UI.png)
 
+**Note** that the features shown will vary depending on your scanner settings - for instance if you have specified `--no-git` then you will have no git or user-related controls at all.
+
 The centre of the display shows the files in your project - I'm using a [Weighted Voronoi Diagram](https://en.wikipedia.org/wiki/Weighted_Voronoi_diagram) which has the big advantage of showing files roughly in proportional to their size.  And by size I'm using lines of code, which is generally much more useful than bytes - especially as research tends to show that high lines of code is correlated with complexity and defects - so just looking for large lines of code is a good starting point for finding problems.
 
 The default layout packs all the files into a single circular Voronoi diagram, but if you [configure the layout tool correctly](tools/layout/howto) you can use circle packing for the highest level display, useful for multi-source projects.
@@ -26,7 +28,13 @@ There is a lot of data in the inspection panel!  Often too much, so you can clos
 
 Note if the file is on a public github repo, there is a link to open the file on github.com (top right, next to the file name)
 
-You can also click on a directory in the top part of the display - currently there is no summary of metrics for a directory, though, so this display isn't very useful.
+At the top of the inspection panel is the directories containing the file, from the root directory downwards.  You can click on a directory to navigate to that directory, and then see some accumulated statistics for that directory and it's descendents.
+
+## Inspecting directories
+
+Directories show less information than files - if you have git data, you will see changes by user and possibly by team.
+
+You can also navigate to child directories - this can be handy if you can't find a directory visually.
 
 ## Date selection
 
@@ -43,3 +51,8 @@ Files that are created after the current selection are not displayed - however a
 ## Metrics and Visualisations
 
 See the section [Metrics and Visualisations](/metrics/overview) for details of all the main visualisations you can display.
+
+## Users and Teams
+
+**TODO** - need to document user and team interfaces and visualizations
+

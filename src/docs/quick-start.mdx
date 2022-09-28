@@ -1,0 +1,60 @@
+---
+title: 'Quick start guide'
+---
+There are individual "How To" guides for the [scanner](/tools/scanner/howto), [layout](/tools/layout/howto) and [explorer](/tools/explorer/howto) but I thought it'd be useful to have a single "quick start" guide for people who just want to run something and have a play.  This uses the defaults for everything - look at the detailed guides for more.
+
+## 1. Check out your code
+
+The first step is to have a clean check-out of your code.  The scanner assumes the code is all in a single subdirectory, or in per-project directories as children of that directory.  Note you can specify that it should follow symbolic links if you want.
+
+## 2. Get the tools
+
+### The Scanner
+
+Sadly the system I used to use to build the scanner binaries isn't currently working, so you need to download the code, and a rust environment, yourself.  I hope to fix this soon, at least for major platforms.
+
+Instead you need to install rust, then compile a binary yourself - detailed instructions are [here](/tools/scanner/howto#fetching-code-and-compiling-a-binary)
+
+### The Layout tool
+
+You should be able to fetch a binary release for x86 Mac, Windows or Linux from <https://github.com/kornysietsma/polyglot-code-offline-layout/releases>
+
+You need to follow extra steps [here](/tools/layout/howto#getting-binaries-to-work-on-mac-osx) to get the binary working on a Mac.
+
+Or you can follow the steps [here](/tools/layout/howto#running-this-script-using-nodejs) to run the layout tool from source - you'll need a working node.js environment.
+
+### The Explorer
+
+The Explorer is not an executable file - it's a zip file containing the HTML, CSS and JavaScript files needed to run the site.  You can run it yourself by:
+
+- Downloading the `polyglot-code-explorer` file from the latest release at <https://github.com/kornysietsma/polyglot-code-explorer/releases> 
+- Unzip it somewhere
+- Load the site in a static web server - see [here](/tools/explorer/howto#to-run-the-explorer-from-a-binary-release) for an example.
+
+At a later stage you can copy your project's data file into the unzipped explorer code to view your own data.
+
+## 3. Scan your code to produce a JSON file
+
+This is a two-step process - the scanner produces a basic JSON file, the layout tool adds layout information to produce a new JSON file:
+
+```shell
+$ polyglot_code_scanner --name my_project ~/projects/my_project -o my_project_1.json
+$ polyglot-code-offline-layout -i my_project_1.json -o my_project.json
+```
+
+## 4. Copy the JSON file into the explorer over the default file
+
+```shell
+$ cp my_project.json ~/explorer/public/data/default.json
+```
+
+## 5. Run the explorer as a static site, view it in a browser
+
+```shell
+$ cd ~/explorer
+$ python3 -m http.server
+Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
+```
+
+then browse to <http://0.0.0.0:8000> to start exploring!
+

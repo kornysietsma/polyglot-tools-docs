@@ -16,11 +16,20 @@ More docs are to follow, but the basic file structure is now:
 
 ```json
 {
-  "version": "1.0.0",
+  "version": "1.0.4",
   "name": "My Project",
   "id": "55cdafb0-8c6e-40fc-a33b-4a7c90f0e0af",
   "tree": {
-    ... same as below
+    ... similar to below
+  },
+  "metadata": {
+    ... things like git users
+  },
+  "features": { // feature flags!
+    "git": true,
+    "coupling": true,
+    "git_details": true,
+    "file_stats": true
   }
 }
 ```
@@ -55,18 +64,19 @@ Every node is a directory or file.  You can distinguish them only by the fact th
 
 The `data` is where almost all other data lives - it's content depends a bit on what kind of tree node you are looking at.
 
-## Root node data
+## Metadata
 
+(this used to be stored as root-node data but now it has it's own section)
 The root node has data that is relevant for the whole project:
 
 ```json
-"data": {
-    "coupling_meta": {
+"metadata": {
+    "coupling": {
       "bucket_count": 40,
       "bucket_size": 7862400,
       "first_bucket_start": 1278288001
     },
-    "git_meta": {
+    "git": {
       "users": [
         {
           "id": 0,
@@ -81,7 +91,7 @@ The root node has data that is relevant for the whole project:
 
 `coupling_meta` is metadata about coupling - TODO: link to docs on coupling.  Basically coupling is calculated for buckets of time - this tells you how big the buckets are (in seconds) when the first one starts (in seconds from the epoch), and how many buckets exist.
 
-`git_meta/users` is a mapping of user identity to unique sequential IDs.  This is mostly to save space!  The git data repeats the same users over and over - files would be much larger, and much slower to process, if the user names and emails were denormalised across the whole file.
+`git/users` is a mapping of user identity to unique sequential IDs.  This is mostly to save space!  The git data repeats the same users over and over - files would be much larger, and much slower to process, if the user names and emails were denormalised across the whole file.
 
 Note that users who differ only by case, e.g. "Jane mcDoe" vs "Jane McDoe" will be merged by default (as of data format v1.0.0) to avoid too many duplicate user names (yes, this happened to me - mostly where people use `<Co-authored-by>` tags but entered names by hand)
 
@@ -89,13 +99,17 @@ In the explorer there will be options in the future to alias users - grouping du
 
 ## Directory nodes
 
-At the moment directories don't have a `data` component unless they are also the root of a git repository, in which case they have a very simple data object:
+Directories have much less data - usually just timestamps unless they are also the root of a git repository, in which case they have data on the repo:
 
 ```json
 "data": {
   "git": {
-    "head": "2d0c4b4564e20840a1649dd4f43a4f068749836a",
-    "remote_url": "git@github.com:reponame/projectname.git"
+    "remote_url": "git@github.com:kornysietsma/polyglot-code-explorer.git",
+    "head": "b53f792dd73d89ea1e908aa59683fb70f46992b2"
+  },
+  "file_stats": {
+    "created": 1661419539,
+    "modified": 1661508437
   }
 }
 ```
@@ -103,8 +117,6 @@ At the moment directories don't have a `data` component unless they are also the
 The scanner can scan multiple git repositories - the root of each repository stores the current `head` and the remote URL, this allows the UI to link to the appropriate website.
 
 This may not work with non-github urls!
-
-Also this information should be optional - code can be scanned without a remote git repository (I think).
 
 ## File nodes
 

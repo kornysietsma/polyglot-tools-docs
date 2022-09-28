@@ -1,40 +1,42 @@
 # Sidebar navigation
 
-- label: 'Introduction'
-  link: '/'
-- label: 'Overview'
-  link: '/overview'
-- label: 'News'
-  link: '/news'
+- label: "Introduction"
+  link: "/"
+- label: "Overview"
+  link: "/overview"
+- label: "News"
+  link: "/news"
+- label: "Quick start guide"
+  link: "/quick-start"
 - label: Tools
   items:
-    - label: 'Polyglot Code Explorer'
+    - label: "Polyglot Code Explorer"
       link: /tools/explorer/description
-    - label: 'Explorer UI in detail'
+    - label: "Explorer UI in detail"
       link: /tools/explorer/ui
-    - label: 'Polyglot Code Scanner'
-      link: '/tools/scanner/description'
-    - label: 'Polyglot Code Offline Layout'
-      link: '/tools/layout/description'
-    - label: 'Simple Code Server'
-      link: '/tools/simple-code-server'
-- label: 'Metrics and Visualisations'
-  link: '/metrics/overview'
-- label: 'How To guides'
+    - label: "Polyglot Code Scanner"
+      link: "/tools/scanner/description"
+    - label: "Polyglot Code Offline Layout"
+      link: "/tools/layout/description"
+    - label: "Simple Code Server"
+      link: "/tools/simple-code-server"
+- label: "Metrics and Visualisations"
+  link: "/metrics/overview"
+- label: "How To guides"
   items:
-    - label: 'How to run the Explorer'
+    - label: "How to run the Explorer"
       link: /tools/explorer/howto
-    - label: 'How to run the Scanner'
+    - label: "How to run the Scanner"
       link: /tools/scanner/howto
-    - label: 'How to run the Layout'
+    - label: "How to run the Layout"
       link: /tools/layout/howto
-- label: 'Other Information'
+- label: "Other Information"
   items:
-    - label: 'Data Format'
+    - label: "Data Format"
       link: /tools/explorer/data-format
-    - label: 'Bibliography'
+    - label: "Bibliography"
       link: /bibliography
-    - label: 'Future plans'
+    - label: "Future plans"
       link: /future-plans
-    - label: 'FAQ'
+    - label: "FAQ"
       link: /faq

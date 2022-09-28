@@ -5,36 +5,27 @@ import Citation from '../components/Citation.js'
 
 ![explorer sample](/images/qgis_circle.png)
 
-**NOTE** I am on Sabbatical and making quite a lot of changes to the apps. Apologies if the docs lag a bit behind.  *To see recent changes you'll need to build everything from source, at the moment*
-
 *TL;DR:* If you don't want to read all this, jump in and have a play with [the Polyglot Code Explorer](http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/) or [another sample with multiple codebases](http://polyglot-code-explorer-openmrs.s3-website.eu-west-2.amazonaws.com/)
 
-I've also [written an introduction to these tools on my blog](https://blog.korny.info/2020/09/06/introducing-the-polyglot-code-explorer.html) - and [talked about them on the ThoughtWorks tech podcast](https://www.thoughtworks.com/podcasts/code-visualization).
-
-**I've added an updates and news page [here](/news)**
-
 ----
-
-The source code is on GitHub:
-
-* <https://github.com/kornysietsma/polyglot-code-scanner>
-* <https://github.com/kornysietsma/polyglot-code-offline-layout>
-* <https://github.com/kornysietsma/polyglot-code-explorer>
-* <https://github.com/kornysietsma/simple-code-server>
 
 > I should add a disclaimer - this is a side project of mine, and is far from perfect! [Full disclaimer and a bit more background here](disclaimer).
 
 ## What are the Polyglot Code Tools?
 
-These are a bunch of tools I've been building in bits and pieces over the seeral years, in an attempt to answer the question:
+The tools are an attempt to answer the question:
 
 > How can we visualise large codebases without needing complex language-specific parsers and logic?
+
+As a consultant I quite often need to quickly overview a large complex codebase - these tools grew out of this need.
 
 ### Why visualisation?
 
 I'm a visual thinker, so my main focus is on visualisation - especially when trying to spot patterns in millions of lines of code.
 
-It is far quicker for me to look at a diagram and see some unusual colouring in one area, than to see the same information in a table of numbers.
+It is far quicker for me to look at a diagram and visually see trends, than to try to get the same information in a table of numbers, or hundreds of individual project pages.
+
+There are many different tools out there for analysing code, but few that let you see a "big picture" view easily across diverse codebases.
 
 ### Why polyglot?
 
@@ -43,6 +34,8 @@ Polyglot means "speaking multiple languages" - in this case, it means these tool
 I've worked in many programming languages over the years, and many of them don't have good or easy code quality tools - either they are too new for a community to have built them, or they are from ancient projects where even if such tools exist, getting them up and running is a headache.  And each tool probably produces different metrics in different formats - it's hard to get any sort of big-picture view.
 
 Also many real-world systems don't use a single language - often it is better to use specialist languages for different tasks, rather than one general-purpose one.  For example one project might have a UI built in JavaScript and HTML, a microservice built in Kotlin and a platform automation tool build in Rust.
+
+And sometimes, the behaviour of users and teams is as informative as what the code looks like.  With these tools I can now look at who has changed which areas of code, over time, and get a feeling for code ownership and team behaviour.  (sadly this only works for git-based systems at this time)
 
 ### Where did this come from?
 
@@ -60,9 +53,9 @@ I talk about "tools" here, but at the moment there is really one main applicatio
 
 You use the [Polyglot Code Scanner](/tools/scanner/description) to scan your source code and produce a data file, then the [Polyglot Code Offline Layout](/tools/layout/description) tool to add layout information to the data file, and finally the [Polyglot Code Explorer](/tools/explorer/description) to view it in a browser.
 
-There is also now also the [Simple Code Server](/tools/simple-code-server) which the explorer can use to let you view source code inside the explorer.
+There is also now also the [Simple Code Server](/tools/simple-code-server) which the explorer can optionally use to let you view source code inside the explorer.
 
-For an overview of how to actually use these apps, look at the [Explorer How To](/tools/explorer/howto) page.
+For an overview of how to actually use these apps, look at the [Quick Start Guide](/quick-start) page, or other how-to guides on the left.
 
 You can see a demo of the explorer in action at <http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/> (this might not quite match these docs, as I sometimes use it as a playground).
 
@@ -72,3 +65,17 @@ I actually realise I haven't pushed these to github yet! Which is good as I don'
 
 There's an older example of this at <https://github.com/kornysietsma/git-cd-chart-twuk2018>
 
+## Source code
+
+These tools are a mixture of Rust, JavaScript and TypeScript.
+
+The source code is on GitHub:
+
+* <https://github.com/kornysietsma/polyglot-code-scanner>
+* <https://github.com/kornysietsma/polyglot-code-offline-layout>
+* <https://github.com/kornysietsma/polyglot-code-explorer>
+* <https://github.com/kornysietsma/simple-code-server>
+
+## Other docs
+
+I've also [written an introduction to these tools on my blog](https://blog.korny.info/2020/09/06/introducing-the-polyglot-code-explorer.html) with an update [on my sabbatical](https://blog.korny.info/2022/09/12/sabbatical.html) - and [talked about them on the ThoughtWorks tech podcast](https://www.thoughtworks.com/podcasts/code-visualization).

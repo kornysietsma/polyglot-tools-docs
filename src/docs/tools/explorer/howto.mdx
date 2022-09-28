@@ -53,10 +53,8 @@ Then open a browser to <http://0.0.0.0:8000> to start exploring!
 For a full example, these are the commands I run typically to process and view the QGIS codebase:
 
 ```shell
-# in scanner directory
-polyglot_code_scanner -c ~/samples/QGIS > ~/data/qgis.json
-# in layout directory
-node layout.js -i ~/data/qgis.json -o ~/data/qgis-voronoi.json
+polyglot_code_scanner --name qgis -c ~/samples/QGIS -o ~/data/qgis.json
+polyglot-code-offline-layout -i ~/data/qgis.json -o ~/data/qgis-voronoi.json
 # in explorer directory
 cp ~/data/qgis-voronoi.json ./public/data/qgis.json
 

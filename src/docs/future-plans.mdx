@@ -13,9 +13,6 @@ I'm also keen to get feedback - if you think I should focus on some areas of thi
 
 This site is nice for getting up and running quickly, but I keep running into little inconveniences using someone else's theme - for instance I was going to add Disqus comments, but it got fiddly making it play nicely with the theme. I probably need to move the site to a plain Gatsby site - it's not that hard to do!
 
-### Supporting mercurial or other VCSs
-
-Firefox code uses mercurial not git - and while git is pretty dominant, legacy codebases often use something else.  It'd be nice to have scanner logic for other kinds of VCS!
 
 ## Medium term / big things
 
@@ -27,6 +24,10 @@ My ideal would be to have a rust algorithm, and then compile it to WebAssembly s
 
 However, I made some attempts to port it to rust, and hit some solid walls.  The underlying algorithm is based on <Citation>(Nocaj and Brandes 2012)</Citation> which is great, but the algorithms for convex hulls and the like are all heavily dependant on mutation of data structures, which are non-trivial in rust.  It'd be easier to do a complete rewrite.
 
+### Supporting mercurial or other VCSs
+
+Firefox code uses mercurial not git - and while git is pretty dominant, legacy codebases often use something else.  It'd be nice to have scanner logic for other kinds of VCS!
+
 ### Read more research
 
 There's a lot of cool research out there - I'd like my plans to be based at least somewhat on what research seems to be showing is relevant, rather than my gut feel.
@@ -35,10 +36,9 @@ There's a lot of cool research out there - I'd like my plans to be based at leas
 
 There are so many things that could be shown! I'm learning more as I read the research, but some things from my list:
 
-* Show user information in more ways - impact of individuals, teams, how people move between teams
-* Allow user editing - especially merging identities if someone uses multiple emails
-* Show ownership more clearly - distinguish between where 5 people changed a file equally, and where one person made 90% of those changes
-* Show more clearly how users change over time - research talks about the impact of new people on a team, we should be able to visualise that
+* ~Show user information in more ways - impact of individuals, teams, how people move between teams~ - done in release 0.3.0
+* ~Allow user editing - especially merging identities if someone uses multiple emails~ - done in release 0.3.0
+* Show more clearly how users and teams change over time - research talks about the impact of new people on a team, we should be able to visualise that.  At the moment teams are static, so they are only really useful for small time scales.
 
 ### Scanner improvements
 
@@ -56,7 +56,7 @@ This could be fixed, but it'd be a lot of work!  The scanner would need to look 
 
 ### Explorer tests
 
-I'm a big fan of testing.  The Explorer however has no tests at all! It'd be good to look into ways to test my javascript - probably in a few stages:
+I'm a big fan of testing.  The Explorer however has almost no tests at all! It'd be good to look into ways to test my javascript - probably in a few stages:
 
 1. Add unit tests for all the raw javascript functions - this should be easy!
 2. Add tests for the complex D3 areas - still should be unit testable, but might be more fiddly

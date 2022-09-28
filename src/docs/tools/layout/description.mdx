@@ -67,7 +67,7 @@ There are two big problems with the libraries I am using:
 
 The slowness might be improved in some cases with a lot of code optimising.  But it might be somewhat inherent in the kind of layouts I'm using.  Some source code directories are huge - and the Voronoi algorithms are iterative, and sometimes they take a long time to get a good solution.
 
-I'd love to build a carefully optimised implementation - possibly in rust using WebAssembly - but it would be a lot of work - and even then, it probably wouldn't be fast enough, and you'd need a lot of JavaScript work to do the layouts incrementally without blocking the browser.
+I'd love to build a carefully optimised implementation - possibly in rust using WebAssembly - but it would be a lot of work - and even then, it might not be fast enough, and you'd need a lot of JavaScript work to do the layouts incrementally without blocking the browser.
 
 So as I don't have time or brain space to do all this work, I decided to cheat.  I use Franck LeBeau's code, but instead of running it in a browser, I run it offline using node.js, and save the resulting layout for use later in the browser.
 
@@ -83,7 +83,7 @@ This of course is even slower!  In big codebases, recursively finding layouts ca
 
 The biggest issue is that the layout can't change in the UI.  You can't exclude files and re-draw the layout, or go back in time and re-draw the layout - whatever you got from this tool, you are stuck with.  So you can't (say) decide to exclude all XML files in the UI - if you decide you want to show source but not data, you need to re-run the initial scan [with an ignore file](/tools/scanner/howto#ignoring-files) and then re-calculate the layout from scratch.
 
-Also sometimes the result still isn't very accurate.  The layout doesn't always converge to a perfect result.  It's probably good enough for most purposes - but it's not always quite right.  That's why I still have a visualisation that highlights file size, so you don't have to trust your eyes.
+Also sometimes the result still isn't quite accurate.  The layout doesn't always converge to a perfect result.  It's probably good enough for most purposes - but it's not always quite right.  That's why I still have a visualisation that highlights file size, so you don't have to trust your eyes.
 
 ## Have you considered other algorithms?
 
