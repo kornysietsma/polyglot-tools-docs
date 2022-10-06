@@ -8,10 +8,10 @@
 <url> <loc>https://polyglot.korny.info/news/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/research-notes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/simple-code-server/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://polyglot.korny.info/tools/scanner/howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/explorer/code/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/layout/howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/layout/description/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://polyglot.korny.info/tools/scanner/howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/metrics/lines-of-code/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/metrics/language/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/metrics/age/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
@@ -23,7 +23,6 @@
 <url> <loc>https://polyglot.korny.info/metrics/unique-changers/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/explorer/description/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/explorer/ui/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://polyglot.korny.info/tools/scanner/binaries-howto/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/overview/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/scanner/description/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/metrics/creation/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
