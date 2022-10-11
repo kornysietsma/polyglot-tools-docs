@@ -1,8 +1,7 @@
 {
-    "spellright.language": [
-        "en-GB"
-    ],
-    "spellright.documentTypes": [
-        "latex"
-    ]
+  "spellright.language": ["en-GB"],
+  "spellright.documentTypes": ["latex"],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.markdownlint": true
+  }
 }

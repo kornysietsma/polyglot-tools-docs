@@ -5,7 +5,7 @@ import Citation from '../components/Citation.js'
 
 ![explorer sample](/images/qgis_circle.png)
 
-*TL;DR:* If you don't want to read all this, jump in and have a play with [the Polyglot Code Explorer](http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/) or [another sample with multiple codebases](http://polyglot-code-explorer-openmrs.s3-website.eu-west-2.amazonaws.com/)
+*TL;DR:* If you don't want to read all this, jump in and have a play with [the Polyglot Code Explorer using QGIS code](http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/) or [the OpenMRS code with multiple projects](http://polyglot-code-explorer-openmrs.s3-website.eu-west-2.amazonaws.com/)
 
 ----
 
@@ -15,9 +15,9 @@ import Citation from '../components/Citation.js'
 
 The tools are an attempt to answer the question:
 
-> How can we visualise large codebases without needing complex language-specific parsers and logic?
+> How can I easily visualise large codebases without needing complex language-specific tools?
 
-As a consultant I quite often need to quickly overview a large complex codebase - these tools grew out of this need.
+As a consultant I quite often need to quickly review large legacy codebases, often in many languages and versions of languages, and home in on possible trouble spots or risky areas. These tools grew out of this need.
 
 ### Why visualisation?
 
@@ -47,23 +47,27 @@ See also [History](/history) for more about how this all started.
 
 ## The Polyglot Code Explorer
 
-I talk about "tools" here, but at the moment there is really one main application, the [Polyglot Code Explorer](/tools/explorer/description) - which is the front-end component of three tightly coupled applications:
+I talk about "tools" here, but at the moment there is really one main application, the [Polyglot Code Explorer](/tools/explorer/description) - which is the front-end interface for exploring a codebase.  It is centered around a Voronoi Treemap (more on that below) which displays one of a range of visualisations of a directory tree of code:
+
+The data for this is built with the other apps - the flow of data is as follows:
 
 ![Tools flowchart](/images/flowchart.png)
 
-You use the [Polyglot Code Scanner](/tools/scanner/description) to scan your source code and produce a data file, then the [Polyglot Code Offline Layout](/tools/layout/description) tool to add layout information to the data file, and finally the [Polyglot Code Explorer](/tools/explorer/description) to view it in a browser.
+1. The [Polyglot Code Scanner](/tools/scanner/description) scans a directory tree of source code and produces a JSON data file
+2. The [Polyglot Code Offline Layout](/tools/layout/description) tool adds layout information to the data file
+3. The [Polyglot Code Explorer](/tools/explorer/description) views the data in a browser
 
-There is also now also the [Simple Code Server](/tools/simple-code-server) which the explorer can optionally use to let you view source code inside the explorer.
+There is also now the [Simple Code Server](/tools/simple-code-server) which can optionally be used by the explorer to view source code as you browse.
 
 For an overview of how to actually use these apps, look at the [Quick Start Guide](/quick-start) page, or other how-to guides on the left.
 
 You can see a demo of the explorer in action at <http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/> (this might not quite match these docs, as I sometimes use it as a playground).
 
-## Git Logging Tools
+### What is that pretty main diagram?
 
-I actually realise I haven't pushed these to github yet! Which is good as I don't really need to document them :) Just suffice to say, I have some work in progress for trying to get yet another git log visualisation thingy working.  One day.  But the explorer has taken priority for now.
+![Voronoi level N](/images/voronoi/voronoi_n.png)
 
-There's an older example of this at <https://github.com/kornysietsma/git-cd-chart-twuk2018>
+This is a Voronoi Treemap - see the [Voronoi Treemap](/voronoi-treemap) page for more.
 
 ## Source code
 

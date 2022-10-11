@@ -1,0 +1,42 @@
+---
+title: 'Voronoi Treemaps and other layouts'
+---
+
+## What is a Voronoi Treemap?
+
+a [Weighted Voronoi Diagram](https://en.wikipedia.org/wiki/Weighted_Voronoi_diagram) is a way of subdividing an area into polygons, where the area of each polygon is (roughly) proportional to it's "weight".  I am using "cumulative lines of code" as weight, as generally we care more about large files than small - especially as there is much research to show correlations between code complexity and lines of code.
+
+Here the yellow areas represent directories with hundreds of thousands of lines of code, the purple area near the middle is only a few hundred lines of code: (I did say 'roughly'!)
+
+![Voronoi level 1](/images/voronoi/voronoi_1.png)
+
+A Treemap is where we apply the same algorithm recursively to each subdirectory.  If you take the diagram above and show 2 levels of directories you get:
+
+![Voronoi level 2](/images/voronoi/voronoi_2.png)
+
+If you recursively apply this to subdirectories and sub-subdirectories and so on, you ultimately get:
+
+![Voronoi level N](/images/voronoi/voronoi_n.png)
+
+Note there are other treemap approaches - a much simpler and more common one is a [rectangular treemap](https://github.com/d3/d3-hierarchy#treemap) - I started with one of these but found it very confusing when dealing with large, deeply nested trees.
+
+## What about those circles?
+
+For some projects which consist of multiple sub-projects, I use a different layout for the top-level directory - a simple [circle pack](https://github.com/d3/d3-hierarchy#pack)
+
+![Circle Pack](/images/voronoi/circle_pack.png)
+
+Here each circle represents a single top-level directory.
+
+They are still voronoi treemaps within each circle - it's just the first level that uses circle packing.
+
+These look great - and size is still proportional to lines of code.  However, it only really works for one nesting level - if you nest circles within circles, the extra space between the circles means that the top-level circles are not in proportion to size.  It looks pretty, but again isn't very viable for deeply nested data.
+
+## Highlighting a selection
+
+When you click on a file in the explorer, the selected file, and it's parent and grandparent and so-on, are all drawn with a yellow border - this can help to visualise the underlying structure:
+
+![Voronoi selection](/images/voronoi/voronoi_selection.png)
+
+Here we have clicked on the file `src/analysis/processing/qgsalgorithmexportmesh.cpp` - the top level highlighted area is the `src` directory, the next is `src/analysis` and so on.
+
