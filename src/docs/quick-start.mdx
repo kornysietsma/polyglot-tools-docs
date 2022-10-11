@@ -11,9 +11,9 @@ The first step is to have a clean check-out of your code.  The scanner assumes t
 
 ### The Scanner
 
-Sadly the system I used to use to build the scanner binaries isn't currently working, so you need to download the code, and a rust environment, yourself.  I hope to fix this soon, at least for major platforms.
+You should be able to fetch a binary release for x86 Mac, Windows or Linux from <https://github.com/kornysietsma/polyglot-code-scanner/releases>
 
-Instead you need to install rust, then compile a binary yourself - detailed instructions are [here](/tools/scanner/howto#fetching-code-and-compiling-a-binary)
+You need to follow extra steps [here](/tools/scanner/howto#getting-binaries-to-work-on-mac-osx) to get the binary working on a Mac.
 
 ### The Layout tool
 
@@ -27,7 +27,7 @@ Or you can follow the steps [here](/tools/layout/howto#running-this-script-using
 
 The Explorer is not an executable file - it's a zip file containing the HTML, CSS and JavaScript files needed to run the site.  You can run it yourself by:
 
-- Downloading the `polyglot-code-explorer` file from the latest release at <https://github.com/kornysietsma/polyglot-code-explorer/releases> 
+- Downloading the `polyglot-code-explorer` file from the latest release at <https://github.com/kornysietsma/polyglot-code-explorer/releases>
 - Unzip it somewhere
 - Load the site in a static web server - see [here](/tools/explorer/howto#to-run-the-explorer-from-a-binary-release) for an example.
 
@@ -38,14 +38,14 @@ At a later stage you can copy your project's data file into the unzipped explore
 This is a two-step process - the scanner produces a basic JSON file, the layout tool adds layout information to produce a new JSON file:
 
 ```shell
-$ polyglot_code_scanner --name my_project ~/projects/my_project -o my_project_1.json
-$ polyglot-code-offline-layout -i my_project_1.json -o my_project.json
+polyglot_code_scanner --name my_project ~/projects/my_project -o my_project_1.json
+polyglot-code-offline-layout -i my_project_1.json -o my_project.json
 ```
 
 ## 4. Copy the JSON file into the explorer over the default file
 
 ```shell
-$ cp my_project.json ~/explorer/public/data/default.json
+cp my_project.json ~/explorer/public/data/default.json
 ```
 
 ## 5. Run the explorer as a static site, view it in a browser
@@ -57,4 +57,3 @@ Serving HTTP on 0.0.0.0 port 8000 (http://0.0.0.0:8000/)
 ```
 
 then browse to <http://0.0.0.0:8000> to start exploring!
-

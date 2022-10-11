@@ -34,6 +34,10 @@ More docs are to follow, but the basic file structure is now:
 }
 ```
 
+The `version` field is a data format version (using semantic versioning) - if I change the format of JSON project files, I will update this version - the explorer might also need updating to handle new data formats.
+
+The `id` field is a unique ID (usually a UUID) for identifying projects when saving/loading settings.  See [the Explorer UI guide](/tools/explorer/ui#project-versions-and-id-checks) for more.
+
 **Docs from here on have not been updated for the new data format**
 
 ## Basic structure
@@ -232,6 +236,7 @@ Some of this is hopefully somewhat obvious:
 Note that we store a lot of excess coupling information (depending on thresholds you picked when you ran the scanner) - by default the `baz.java` relationship above won't be shown as it's not very strongly coupled.
 
 ## Layout data
+
 The [layout](/tools/layout/description) tool adds some extra information to every node, including the root:
 
 ```json
@@ -262,4 +267,3 @@ The layout includes a center point for each node, a maximum width and height, an
 Algorithm can be `voronoi` or `circlePack` at the moment - this is only really used by the UI to tell how to draw the background.
 
 There is also a "value" which is the sum of lines of code of all contained files. (D3 could calculate this for us - it's here just to save processing in the UI)
-

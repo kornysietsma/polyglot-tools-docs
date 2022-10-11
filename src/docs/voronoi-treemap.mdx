@@ -2,41 +2,50 @@
 title: 'Voronoi Treemaps and other layouts'
 ---
 
-## What is a Voronoi Treemap?
+## What is a weighted voronoi treemap?
 
-a [Weighted Voronoi Diagram](https://en.wikipedia.org/wiki/Weighted_Voronoi_diagram) is a way of subdividing an area into polygons, where the area of each polygon is (roughly) proportional to it's "weight".  I am using "cumulative lines of code" as weight, as generally we care more about large files than small - especially as there is much research to show correlations between code complexity and lines of code.
+A [treemap](https://en.wikipedia.org/wiki/Treemapping) is generally a way of representing a hierarchy of data in a recursive way.  A weighted treemap is weighted so that each node has area proportional to it's value - in our case, to the lines of code.
 
-Here the yellow areas represent directories with hundreds of thousands of lines of code, the purple area near the middle is only a few hundred lines of code: (I did say 'roughly'!)
+Traditional D3 treemaps are typically rectangular: <https://observablehq.com/@d3/treemap> - this is where I started out.  But rectangular maps get quite hard to understand visually - edges line up in ugly ways, and you can't really see what is a parent and what is a child.
 
-![Voronoi level 1](/images/voronoi/voronoi_1.png)
+Instead, I'm using a layout based on [Weighted Voronoi Diagrams](https://en.wikipedia.org/wiki/Weighted_Voronoi_diagram) - which also have the property that each area shown is proportional to the value, but are much more organic.
 
-A Treemap is where we apply the same algorithm recursively to each subdirectory.  If you take the diagram above and show 2 levels of directories you get:
+## How is this a tree?
 
-![Voronoi level 2](/images/voronoi/voronoi_2.png)
+The Voronoi layout algorithm is applied recursively for each directory and subdirectory in the codebase.  For example, when laying out the [qgis codebase](http://polyglot-code-explorer.s3-website.eu-west-2.amazonaws.com/) the first level is laid out like this:
 
-If you recursively apply this to subdirectories and sub-subdirectories and so on, you ultimately get:
+![layout depth 1](/images/layouts/voronoi_1level.png)
 
-![Voronoi level N](/images/voronoi/voronoi_n.png)
+where each segment is one top-level directory like `/src` or `/test`, with a size roughly proportional to the total lines of code inside that directory.
 
-Note there are other treemap approaches - a much simpler and more common one is a [rectangular treemap](https://github.com/d3/d3-hierarchy#treemap) - I started with one of these but found it very confusing when dealing with large, deeply nested trees.
+Then each segment of this diagram is subdivided with another voronoi layout:
 
-## What about those circles?
+![layout depth 2](/images/layouts/voronoi_2level.png)
 
-For some projects which consist of multiple sub-projects, I use a different layout for the top-level directory - a simple [circle pack](https://github.com/d3/d3-hierarchy#pack)
+Here each segment is a file or directory one layer deeper, such as `/src/core`
 
-![Circle Pack](/images/voronoi/circle_pack.png)
+This continues until all files are mapped (though you can set a limit in the UI, with the 'display maximum depth' advanced option):
 
-Here each circle represents a single top-level directory.
+![layout depth 9](/images/layouts/voronoi_9level.png)
 
-They are still voronoi treemaps within each circle - it's just the first level that uses circle packing.
+## What about those circles on some diagrams?
 
-These look great - and size is still proportional to lines of code.  However, it only really works for one nesting level - if you nest circles within circles, the extra space between the circles means that the top-level circles are not in proportion to size.  It looks pretty, but again isn't very viable for deeply nested data.
+The layout tool has a command-line option `--circles` which uses [d3's circle packing algorithm](https://observablehq.com/@d3/circle-packing) for just the top layer of layout.
 
-## Highlighting a selection
+This is very useful for when you have multiple repositories - each repository (or each top-level directory at least) is shown as a circle, which makes the split between repositories clearer.
 
-When you click on a file in the explorer, the selected file, and it's parent and grandparent and so-on, are all drawn with a yellow border - this can help to visualise the underlying structure:
+Circle packing still keeps areas proportional to "size" in terms of lines of code, as long as we only use the circle packing algorithm at the top level.
 
-![Voronoi selection](/images/voronoi/voronoi_selection.png)
+For example, the [openmrs codebase](http://polyglot-code-explorer-openmrs.s3-website.eu-west-2.amazonaws.com/) is made up of many repositories - if you view just the top level circles, it looks like this:
 
-Here we have clicked on the file `src/analysis/processing/qgsalgorithmexportmesh.cpp` - the top level highlighted area is the `src` directory, the next is `src/analysis` and so on.
+![layout circles depth 1](/images/layouts/circles_1level.png)
 
+Here each circle is a whole git repository.
+
+Deeper layers are then laid out using the same Voronoi algorithm as above:
+
+![layout circles depth 2](/images/layouts/circles_2level.png)
+
+And so on, until the final layout is:
+
+![layout circles depth N](/images/layouts/circles_nlevel.png)

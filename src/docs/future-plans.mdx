@@ -11,8 +11,7 @@ I'm also keen to get feedback - if you think I should focus on some areas of thi
 
 ### Improving this website
 
-This site is nice for getting up and running quickly, but I keep running into little inconveniences using someone else's theme - for instance I was going to add Disqus comments, but it got fiddly making it play nicely with the theme. I probably need to move the site to a plain Gatsby site - it's not that hard to do!
-
+This site is nice for getting up and running quickly, but I keep running into little inconveniences using someone else's theme - for instance I was going to add Disqus comments, but it got fiddly making it play nicely with the theme. I probably need to move the site to a plain Gatsby site, or a different static side system - it's not that hard to do!
 
 ## Medium term / big things
 
@@ -36,13 +35,13 @@ There's a lot of cool research out there - I'd like my plans to be based at leas
 
 There are so many things that could be shown! I'm learning more as I read the research, but some things from my list:
 
-* ~Show user information in more ways - impact of individuals, teams, how people move between teams~ - done in release 0.3.0
-* ~Allow user editing - especially merging identities if someone uses multiple emails~ - done in release 0.3.0
+* ~~Show user information in more ways - impact of individuals, teams, how people move between teams~~ - done in release 0.3.0
+* ~~Allow user editing - especially merging identities if someone uses multiple emails~~ - done in release 0.3.0
 * Show more clearly how users and teams change over time - research talks about the impact of new people on a team, we should be able to visualise that.  At the moment teams are static, so they are only really useful for small time scales.
 
 ### Scanner improvements
 
-* ~Following renames - the scanner sees file renames, but it doesn't do a great job of matching earlier changes to the final file name!~ - fixed in release 0.2.0!
+* ~~Following renames - the scanner sees file renames, but it doesn't do a great job of matching earlier changes to the final file name!~~ - fixed in release 0.2.0!
 * More tests - I started with a lot of unit tests, but I haven't always added tests for newer features, especially as some need quite complex test data setup
 * Test suites - I want to craft some git repos with real test scenarios, e.g. multiple authors, PRs, rebases.  This is quite tricky to do!  But it'd improve testing a lot.  One option is to base tests on a real-world open-source codebase, but it might make tests a bit fragile.
 
@@ -58,7 +57,8 @@ This could be fixed, but it'd be a lot of work!  The scanner would need to look 
 
 I'm a big fan of testing.  The Explorer however has almost no tests at all! It'd be good to look into ways to test my javascript - probably in a few stages:
 
-1. Add unit tests for all the raw javascript functions - this should be easy!
+1. Add unit tests for all the raw javascript functions - this should be easy, but slow
+   * As of September 2022, there are some tests - I'm TDD-ing some new functionality.  Not sure about retrofitting tests to earlier code though
 2. Add tests for the complex D3 areas - still should be unit testable, but might be more fiddly
 3. Add journey tests for the overall UI - might not actually be worth it.
 
@@ -71,4 +71,3 @@ However, it did occur to me that I could get more language information - method 
 ### Other visualisations
 
 There are lots of other things I'd like to explore - especially more detailed git history visualisations.  This will probably have to wait until I have a need to do these as part of my day job!
-

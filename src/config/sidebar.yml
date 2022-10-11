@@ -8,6 +8,8 @@
   link: "/news"
 - label: "Quick start guide"
   link: "/quick-start"
+- label: "Voronoi Treemaps"
+  link: "/voronoi-treemap"
 - label: Tools
   items:
     - label: "Polyglot Code Explorer"
