@@ -32,6 +32,8 @@
       link: /tools/scanner/howto
     - label: "How to run the Layout"
       link: /tools/layout/howto
+    - label: "Users and Teams"
+      link: /tools/explorer/users-and-teams
 - label: "Other Information"
   items:
     - label: "Data Format"

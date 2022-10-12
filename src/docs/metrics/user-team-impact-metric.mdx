@@ -1,0 +1,40 @@
+# User/Team impact metric
+
+(back to [team visualisations](/metrics/team-visualisations))
+
+User and Team visualisations and inspectors need a way to show the "size" of a user or team's contribution.  This isn't trivial - if one user has made a single commit to a project but added 1000 new files, is that bigger or smaller than another user who has made 100 changes to a single file over the course of a year?  The answer, as always, is "it depends".
+
+To support this, the explorer has a setting to choose which metric to use - you can configure this in the Advanced Settings controls (and in some visualisations):
+
+* Lines of Code - the total of lines added + lines deleted to any files
+* File Commits - the number of commits made to files
+* Files Changed - the number of files touched in any way.
+* Days containing a change - the number of days that any files were changed.  
+
+These all have different implications and values:
+
+## Lines of Code
+
+This is the simplest comparison - but a huge commit can completely blow out the numbers.  For instance, if you don't have consistent code formatting, and users continually reformat code and check in the changes, you will have a massive lines-of-code count even though actual change is small.
+
+This also can be a headache if you check in windows line-endings and unix line-endings and don't set git up to normalise the commits.  (I hope to detect this one day in the scanner!)  Note that most other git tools will also see a line-ending change as a massive change that touches every line of the file.
+
+Generally however this is a good metric - big changes will have a larger impact than small changes, and it gets past some of the limitations of other metrics.
+
+## File commits
+
+Note that this has the value (commits * files) - a single commit that touches 10 files counts as 10 in this statistic.  (it has to work this way, as the data file doesn't store every individual commit)
+
+Commits can be a useful metric, but if one team does hundreds of tiny commits, and one team does a handful of huge commits, the first team will look "bigger".
+
+## Files changed
+
+For most visualisations this doesn't mean much - if you are looking at a single file, the 'Files Changed' value can only be 0 or 1!  But it is needed in a few places.  However generally you shouldn't select this for the current visualisations.
+
+## Days containing a change
+
+This counts _unique_ days - if a file is changed 17 times on Monday and 320 times on Tuesday in 50 different commits, that still only counts as 2 days.
+
+This can be a great way to show overall impact - a team that touches a file on 200 different days in a year, probably has more 'ownership' than a team that makes hundreds of commits but all in a single week.
+
+But it doesn't distinguish at all between people doing tiny changes and huge changes.  Lines of code is probably a better metric for "total amount of work done" in that case.

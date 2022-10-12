@@ -75,7 +75,6 @@ A key concept here is the 'coupling ratio' - if `foo.rs` changes 100 times, and 
 
 Note this is a unidirectional relationship - because `foo.ts` might have changed a lot in totally unrelated ways.  If `foo.ts` has changed another 50 times, it won't affect the coupling above, but it might mean a much lower coupling in the other direction (in plainer English - `foo.rs` can't change without a risk of breaking `foo.ts` but the reverse might not be true)
 
-
 ## Filtering the results
 
 A lot of coupling information is noise - and to keep file sizes down, a lot is filtered in the scanner.  You can tweak these filters if you want more data to play with, but beware, file sizes can get very large very fast.
@@ -98,27 +97,27 @@ This used to happen in the User Interface only, but file sizes got extreme in so
 
 An example might help - from the qgis source code you have folders like
 
-- src
-  - analysis
-    - qgsanalysis.cpp
-    - qgsanalysis.h
-    - processing
-      - qgisalgorithmgrid.cpp
-      - qgisalgorithmgrid.h
-    - network
-      - qgsgraph.cpp
-- python
-  - core
-    - auto_generated
-      - processing
-- qgis.sip.in
+* src
+  * analysis
+    * qgsanalysis.cpp
+    * qgsanalysis.h
+    * processing
+      * qgisalgorithmgrid.cpp
+      * qgisalgorithmgrid.h
+    * network
+      * qgsgraph.cpp
+* python
+  * core
+    * auto_generated
+      * processing
+* qgis.sip.in
 
 ### Distance
 
 Distance is a lot like a family tree:
-- Siblings are distance 1.  So `qgsanalysis.cpp` and `qgsanalysis.h` are distance 1
-- Cousins are distance 2.  So `qgsanalysis.cpp` and `qgsgraph.cpp` are distance 2 - they have a grandparent `analysis` in common.
-- Uncle/Aunt relationships are just treated based on the lowest descendant - so `qgsanalysis.cpp` and `qgisalgorithmgrid.cpp` are treated as distance 2, as they also have a grandparent `analysis` in common
+* Siblings are distance 1.  So `qgsanalysis.cpp` and `qgsanalysis.h` are distance 1
+* Cousins are distance 2.  So `qgsanalysis.cpp` and `qgsgraph.cpp` are distance 2 - they have a grandparent `analysis` in common.
+* Uncle/Aunt relationships are just treated based on the lowest descendant - so `qgsanalysis.cpp` and `qgisalgorithmgrid.cpp` are treated as distance 2, as they also have a grandparent `analysis` in common
 
 Files with no common ancestor don't have a distance - they are always included.  So `qgis.sip.in` is an undefined distance from `qgsanalysis.cpp`.  (I don't treat the root as a real ancestor)
 
@@ -169,9 +168,3 @@ When you run `polyglot-code-scanner -h` you get a bit of help, which lists all t
 --coupling-min-bursts <min-activity-bursts>
     If a file has fewer bursts of change than this in a bucket, don't measure coupling from it [default: 10]
 ```
-
-
-
-## Viewing coupling in the Explorer
-
-TODO!

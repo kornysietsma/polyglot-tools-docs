@@ -93,7 +93,7 @@ The root node has data that is relevant for the whole project:
     }
 ```
 
-`coupling_meta` is metadata about coupling - TODO: link to docs on coupling.  Basically coupling is calculated for buckets of time - this tells you how big the buckets are (in seconds) when the first one starts (in seconds from the epoch), and how many buckets exist.
+`coupling_meta` is metadata about coupling - see [the Temporal Coupling visualisation page](/metrics/temporal-coupling).  Basically coupling is calculated for buckets of time - this tells you how big the buckets are (in seconds) when the first one starts (in seconds from the epoch), and how many buckets exist.
 
 `git/users` is a mapping of user identity to unique sequential IDs.  This is mostly to save space!  The git data repeats the same users over and over - files would be much larger, and much slower to process, if the user names and emails were denormalised across the whole file.
 
