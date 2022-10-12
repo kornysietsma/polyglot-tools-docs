@@ -7,8 +7,8 @@
 <url> <loc>https://polyglot.korny.info/history/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/faq/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/news/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
-<url> <loc>https://polyglot.korny.info/overview/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/quick-start/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://polyglot.korny.info/overview/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/research-notes/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/tools/simple-code-server/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
 <url> <loc>https://polyglot.korny.info/voronoi-treemap/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
